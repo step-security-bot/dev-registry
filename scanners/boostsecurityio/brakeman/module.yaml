@@ -6,13 +6,14 @@ namespace: boostsecurityio/brakeman
 
 config:
   support_diff_scan: true
+  require_full_repo: true
 
 steps:
   - scan:
       command:
         docker:
           image: presidentbeef/brakeman:latest@sha256:7416e4cf46131d5f920be496485d30d55a9b9f00acec28847ae1e5f10ac837f4
-          command: --format json --quiet --no-pager --no-exit-on-warn --no-exit-on-error /src
+          command: --format json --quiet --no-pager --no-exit-on-warn --no-exit-on-error --force /src
           workdir: /src
       format: sarif
       post-processor:
