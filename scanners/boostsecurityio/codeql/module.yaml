@@ -36,8 +36,9 @@ steps:
         --no-calculate-baseline \
         --quiet \
         --threads=0 \
+        --overwrite \
         $CODEQL_CREATE_ARGS \
-        -- "$SETUP_PATH/codeql-db"
+        -- "../codeql-db"
 
   - scan:
       format: sarif
@@ -56,7 +57,7 @@ steps:
             --quiet \
             --threads=0 \
             $CODEQL_ANALYZE_ARGS \
-            -- "$SETUP_PATH/codeql-db" $CODEQL_QUERY
+            -- "../codeql-db" $CODEQL_QUERY
 
       post-processor:
         docker:
