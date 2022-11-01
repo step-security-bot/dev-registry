@@ -1,0 +1,35 @@
+api_version: 1.0
+
+
+id: boostsecurityio/bundler-audit
+name: Boost bundler-audit Scanner
+namespace: boostsecurityio/bundler-audit
+
+
+config:
+  support_diff_scan: true
+  include_files:
+    - Gemfile
+    - ${GEMFILE_LOCK:-Gemfile.lock}
+
+steps:
+  - scan:
+      command:
+        docker:
+          image: ruby:3.1.2@sha256:933ec5cdaeae085292f00f69fd923f680f9d5a82959db74687cbbbd403b85a19
+          command: |
+            bash -c 'touch Gemfile &&
+                     gem install --silent bundler-audit -v "0.9.1" &&
+                     (bundler-audit check --gemfile-lock="$GEMFILE_LOCK" --quiet --update --format json /src || true)'
+          workdir: /src
+          environment:
+            HOME: /tmp
+            GEMFILE_LOCK: ${GEMFILE_LOCK:-Gemfile.lock}
+      format: sarif
+      post-processor:
+        docker:
+            image: public.ecr.aws/boostsecurityio/boost-scanner-bundler-audit:6098d7b@sha256:8fa2e319ce8697af0c56e32f8506f753dde6746b9629e20c172eb599a38b518d
+            command: process
+            environment:
+                GEMFILE_LOCK: ${GEMFILE_LOCK:-Gemfile.lock}
+                PYTHONIOENCODING: utf-8
