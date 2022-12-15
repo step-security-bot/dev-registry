@@ -48,6 +48,7 @@ rules:
     categories:
     - ALL
     - cwe-778
+    - boost-hardened
     group: top10-security-logging-monitoring-failures
     name: CWE-778
     pretty_name: CWE-778 - Insufficient Logging
@@ -123,10 +124,13 @@ rules:
   CWE-798:
     categories:
     - ALL
+    - stored-secrets
     - cwe-top-25
-    - cwe-798
     - boost-baseline
     - boost-hardened
+    - cwe-200
+    - cwe-798
+    - cwe-522
     group: top10-id-authn-failures
     name: CWE-798
     pretty_name: CWE-798 - Use of Hard-coded Credentials
@@ -349,6 +353,7 @@ rules:
     categories:
     - ALL
     - cwe-1236
+    - boost-hardened
     group: top10-injection
     name: CWE-1236
     pretty_name: CWE-1236 - Improper Neutralization of Formula Elements in a CSV File
@@ -371,6 +376,8 @@ rules:
     categories:
     - ALL
     - cwe-116
+    - boost-baseline
+    - boost-hardened
     group: top10-injection
     name: CWE-116
     pretty_name: CWE-116 - Improper Encoding or Escaping of Output
@@ -389,6 +396,8 @@ rules:
     categories:
     - ALL
     - cwe-943
+    - boost-baseline
+    - boost-hardened
     group: top10-injection
     name: CWE-943
     pretty_name: CWE-943 - Improper Neutralization of Special Elements in Data Query
@@ -431,6 +440,7 @@ rules:
     categories:
     - ALL
     - cwe-915
+    - boost-hardened
     group: top10-software-data-integrity-failures
     name: CWE-915
     pretty_name: CWE-915 - Improperly Controlled Modification of Dynamically-Determined
@@ -526,6 +536,7 @@ rules:
   CWE-UNKNOWN:
     categories:
     - ALL
+    - boost-hardened
     group: top10-insecure-design
     name: CWE-UNKNOWN
     pretty_name: CWE-UNKNOWN - Original rule did not map to a known CWE rule

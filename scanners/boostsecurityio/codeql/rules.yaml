@@ -3,6 +3,8 @@ rules:
     categories:
       - ALL
       - cwe-1336
+      - boost-baseline
+      - boost-hardened
     description: The product uses a template engine to insert or process externally-influenced input, but it does not neutralize or incorrectly neutralizes special elements or syntax that can be interpreted as template expressions or other code directives when processed.
     group: top10-injection
     name: CWE-1336
@@ -12,6 +14,7 @@ rules:
     categories:
       - ALL
       - cwe-285
+      - boost-hardened
     description: The software does not perform or incorrectly performs an authorization check when an actor attempts to access a resource or perform an action.
     group: top10-broken-access-control
     name: CWE-285
@@ -20,7 +23,14 @@ rules:
   CWE-259:
     categories:
       - ALL
+      - stored-secrets
+      - cwe-top-25
+      - boost-baseline
+      - boost-hardened
       - cwe-259
+      - cwe-200
+      - cwe-798
+      - cwe-522
     description: The software contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.
     group: top10-id-authn-failures
     name: CWE-259
@@ -75,6 +85,7 @@ rules:
     categories:
     - ALL
     - cwe-778
+    - boost-hardened
     group: top10-security-logging-monitoring-failures
     name: CWE-778
     pretty_name: CWE-778 - Insufficient Logging
@@ -150,10 +161,13 @@ rules:
   CWE-798:
     categories:
     - ALL
+    - stored-secrets
     - cwe-top-25
-    - cwe-798
     - boost-baseline
     - boost-hardened
+    - cwe-200
+    - cwe-798
+    - cwe-522
     group: top10-id-authn-failures
     name: CWE-798
     pretty_name: CWE-798 - Use of Hard-coded Credentials
@@ -376,6 +390,7 @@ rules:
     categories:
     - ALL
     - cwe-1236
+    - boost-hardened
     group: top10-injection
     name: CWE-1236
     pretty_name: CWE-1236 - Improper Neutralization of Formula Elements in a CSV File
@@ -398,6 +413,8 @@ rules:
     categories:
     - ALL
     - cwe-116
+    - boost-baseline
+    - boost-hardened
     group: top10-injection
     name: CWE-116
     pretty_name: CWE-116 - Improper Encoding or Escaping of Output
@@ -416,6 +433,8 @@ rules:
     categories:
     - ALL
     - cwe-943
+    - boost-baseline
+    - boost-hardened
     group: top10-injection
     name: CWE-943
     pretty_name: CWE-943 - Improper Neutralization of Special Elements in Data Query
@@ -458,6 +477,7 @@ rules:
     categories:
     - ALL
     - cwe-915
+    - boost-hardened
     group: top10-software-data-integrity-failures
     name: CWE-915
     pretty_name: CWE-915 - Improperly Controlled Modification of Dynamically-Determined
@@ -553,6 +573,7 @@ rules:
   CWE-UNKNOWN:
     categories:
     - ALL
+    - boost-hardened
     group: top10-insecure-design
     name: CWE-UNKNOWN
     pretty_name: CWE-UNKNOWN - Original rule did not map to a known CWE rule
