@@ -1039,7 +1039,7 @@ rules:
     - supply-chain-cicd-weak-configuration
     - boost-baseline
     - boost-hardened
-    description: Checks for GitHub repositories that do not have any Branch Protection
+    description: Checks for repositories that do not have any Branch Protection
       configured.
     group: supply-chain-scm-weak-configuration
     name: cicd-branch-protection-absent
