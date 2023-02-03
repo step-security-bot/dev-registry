@@ -1,0 +1,45 @@
+api_version: 1.0
+
+
+id: boostsecurityio/osv-scanner
+name: BoostSecurity osv-scanner
+namespace: boostsecurityio/osv-scanner
+
+
+config:
+  support_diff_scan: true
+  include_files:
+    - buildscript-gradle.lockfile
+    - Cargo.lock
+    - composer.lock
+    - conan.lock
+    - Gemfile.lock
+    - go.mod
+    - gradle.lockfile
+    - mix.lock
+    - package-lock.json
+    - packages.lock.json
+    - Pipfile.lock
+    - pnpm-lock.yaml
+    - poetry.lock
+    - pom.xml
+    - pubspec.lock
+    - requirements.txt
+    - yarn.lock
+
+steps:
+- scan:
+    command:
+      docker:
+        image: ghcr.io/google/osv-scanner:v1.1.0@sha256:dafbaa88ec8ed5b4e8b055ed2005fafb3a32072f79fcd26cd55bddbc3d59a6dc
+        command: --recursive --json .
+        workdir: /src
+        environment:
+          HOME: /tmp
+      format: sarif
+      post-processor:
+        docker:
+            image: public.ecr.aws/boostsecurityio/boost-converter-sca:0b7418a@sha256:231b8276beb9fb14258a77cf53d799bac1e77f35b89fd587ad1228d79df88984
+            command: process --scanner osv
+            environment:
+                PYTHONIOENCODING: utf-8
