@@ -36,10 +36,10 @@ steps:
         workdir: /src
         environment:
           HOME: /tmp
-      format: sarif
-      post-processor:
-        docker:
-            image: public.ecr.aws/boostsecurityio/boost-converter-sca:0b7418a@sha256:231b8276beb9fb14258a77cf53d799bac1e77f35b89fd587ad1228d79df88984
-            command: process --scanner osv
-            environment:
-                PYTHONIOENCODING: utf-8
+    format: sarif
+    post-processor:
+      docker:
+          image: public.ecr.aws/boostsecurityio/boost-converter-sca:0b7418a@sha256:231b8276beb9fb14258a77cf53d799bac1e77f35b89fd587ad1228d79df88984
+          command: process --scanner osv
+          environment:
+              PYTHONIOENCODING: utf-8
