@@ -27,15 +27,51 @@ config:
     - requirements.txt
     - yarn.lock
 
+setup:
+  - name: Install OSV-Scanner
+    environment:
+      VERSION: 1.1.0
+      LINUX_X86_64_SHA: 73b3b297f0a9a3fa28ea45fd45b3b9e74e5a0044ec1c03693a4e8aff0d169f86
+      LINUX_ARM64_SHA: fed5a1109f45410d8bcecba852aab48f1812b5254e3cfdd2950ef9330e9e29c2
+      MACOS_ARM64_SHA: 65fa9c435535fd58cc1fd6878a09009c44d608c749c41b8f7a7e4727cda0e6ee
+    run: |
+      BINARY_URL="https://github.com/google/osv-scanner/releases/download/v${VERSION}"
+      ARCH=$(uname -m)
+      case "$(uname -sm)" in
+        "Linux x86_64")
+          BINARY_URL="${BINARY_URL}/osv-scanner_${VERSION}_linux_amd64"
+          SHA="${LINUX_X86_64_SHA} osv-scanner"
+          ;;
+        "Linux aarch64")
+          BINARY_URL="${BINARY_URL}/osv-scanner_${VERSION}_linux_arm64"
+          SHA="${LINUX_ARM64_SHA} osv-scanner"
+          ;;
+        "Darwin arm64")
+          BINARY_URL="${BINARY_URL}/osv-scanner_${VERSION}_darwin_arm64"
+          SHA="${MACOS_ARM64_SHA} osv-scanner"
+          ;;
+        *)
+          echo "Unsupported machine: ${OPTARG}"
+          exit 1
+          ;;
+      esac
+      curl -o osv-scanner -fsSL "${BINARY_URL}"
+      echo "${SHA}" | sha256sum --check
+      
+      chmod +x osv-scanner
+
 steps:
 - scan:
     command:
-      docker:
-        image: ghcr.io/google/osv-scanner:v1.1.0@sha256:dafbaa88ec8ed5b4e8b055ed2005fafb3a32072f79fcd26cd55bddbc3d59a6dc
-        command: --recursive --json .
-        workdir: /src
-        environment:
-          HOME: /tmp
+      run: |
+        if ! $SETUP_PATH/osv-scanner --recursive --json .; then
+          if test $? -gt 2; then
+            echo "osv-scanner failed to execute"
+            exit 1
+          fi
+        fi
+      environment:
+        HOME: /tmp
     format: sarif
     post-processor:
       docker:
