@@ -29,4 +29,4 @@ steps:
             HOME: /tmp/gosec
       format: sarif
       post-processor:
-        run: $SETUP_PATH/jq-linux64 'walk(if type == "object" and has("id") and has("name") then del(.name) else . end)'
+        run: $SETUP_PATH/jq-linux64 'walk(if type == "object" and has("id") and has("name") then del(.name) else . end) | walk(if type == "object" and has("ruleIndex") and has("ruleId") then del(.ruleIndex) else . end)'
