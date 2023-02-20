@@ -20,7 +20,7 @@ steps:
           command: |
             bash -c 'touch Gemfile &&
                      gem install --silent bundler-audit -v "0.9.1" &&
-                     (bundler-audit check --gemfile-lock="$GEMFILE_LOCK" --quiet --update --format json /src || true)'
+                     (bundler-audit check --gemfile-lock="$GEMFILE_LOCK" --quiet --update --format json . || true)'
           workdir: /src
           environment:
             HOME: /tmp

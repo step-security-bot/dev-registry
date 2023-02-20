@@ -13,7 +13,7 @@ steps:
       command:
         docker:
           image: presidentbeef/brakeman:latest@sha256:7416e4cf46131d5f920be496485d30d55a9b9f00acec28847ae1e5f10ac837f4
-          command: --format json --quiet --no-pager --no-exit-on-warn --no-exit-on-error --force /src
+          command: --format json --quiet --no-pager --no-exit-on-warn --no-exit-on-error --force .
           workdir: /src
       format: sarif
       post-processor:
