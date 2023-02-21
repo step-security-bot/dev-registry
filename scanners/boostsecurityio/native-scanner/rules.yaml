@@ -1301,6 +1301,56 @@ rules:
     name: cicd-scm-2fa-enforcement-absent
     pretty_name: CI/CD - Missing GitHub Organization 2FA Enforcement
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-2fa-enforcement-absent.html'
+  cicd-scm-gh-app-with-elevated-permissions:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-hardened
+    description: Checks for GitHub organizations with third-party applications that have elevated permissions.
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-gh-app-with-elevated-permissions
+    pretty_name: CI/CD - Elevated GitHub App Permissions
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-app-with-elevated-permissions.html'
+  cicd-scm-gh-org-has-outside-collaborators:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-hardened
+    description: Checks for GitHub organizations with outside collaborators.
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-gh-org-has-outside-collaborators
+    pretty_name: CI/CD - GitHub Organization has Outside Collaborators
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-org-has-outside-collaborators.html'
+  cicd-scm-gh-org-high-default-member-permissions:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Checks for GitHub organizations with privileged default member permissions.
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-gh-org-high-default-member-permissions
+    pretty_name: CI/CD - Privileged Default Member Permissions
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-org-high-default-member-permissions.html'
+  cicd-scm-gh-org-insecure-webook:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Checks for GitHub organizations with insecure webhooks.
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-gh-org-insecure-webook
+    pretty_name: CI/CD - Insecure GitHub Webhooks
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-org-insecure-webhook.html'
   cicd-unpinned-dependencies:
     categories:
     - ALL
