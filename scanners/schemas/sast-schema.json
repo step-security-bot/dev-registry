@@ -1,0 +1,2229 @@
+{
+  "title": "SastResult",
+  "description": "Sast Result type.",
+  "type": "object",
+  "properties": {
+    "ruleId": {
+      "title": "Ruleid",
+      "description": "The stable, unique identifier of the rule, if any, to which this notification is relevant. This member can be used to retrieve rule metadata from the rules dictionary, if it exists.",
+      "type": "string"
+    },
+    "ruleIndex": {
+      "title": "Ruleindex",
+      "description": "The index within the tool component rules array of the rule object associated with this result.",
+      "default": -1,
+      "minimum": -1,
+      "type": "integer"
+    },
+    "rule": {
+      "title": "Rule",
+      "description": "A reference used to locate the rule descriptor relevant to this result.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ReportingDescriptorReference"
+        }
+      ]
+    },
+    "kind": {
+      "description": "A value that categorizes results by evaluation state.",
+      "default": "fail",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Kind"
+        }
+      ]
+    },
+    "level": {
+      "description": "A value specifying the severity level of the result.",
+      "default": "warning",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Level"
+        }
+      ]
+    },
+    "message": {
+      "title": "Message",
+      "description": "A message that describes the result. The first sentence of the message only will be displayed when visible space is limited.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Message"
+        }
+      ]
+    },
+    "analysisTarget": {
+      "title": "Analysistarget",
+      "description": "Identifies the artifact that the analysis tool was instructed to scan. This need not be the same as the artifact where the result actually occurred.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ArtifactLocation"
+        }
+      ]
+    },
+    "locations": {
+      "title": "Locations",
+      "minItems": 1,
+      "uniqueItems": false,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SastLocation"
+      }
+    },
+    "guid": {
+      "title": "Guid",
+      "description": "A stable, unique identifer for the result in the form of a GUID.",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+      "type": "string"
+    },
+    "correlationGuid": {
+      "title": "Correlationguid",
+      "description": "A stable, unique identifier for the equivalence class of logically identical results to which this result belongs, in the form of a GUID.",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+      "type": "string"
+    },
+    "occurrenceCount": {
+      "title": "Occurrencecount",
+      "description": "A positive integer specifying the number of times this logically unique result was observed in this run.",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "partialFingerprints": {
+      "title": "Partialfingerprints",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "fingerprints": {
+      "title": "Fingerprints",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "stacks": {
+      "title": "Stacks",
+      "description": "An array of 'stack' objects relevant to the result.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Stack"
+      }
+    },
+    "codeFlows": {
+      "title": "Codeflows",
+      "description": "An array of 'codeFlow' objects relevant to the result.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": false,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CodeFlow"
+      }
+    },
+    "graphs": {
+      "title": "Graphs",
+      "description": "An array of zero or more unique graph objects associated with the result.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Graph"
+      }
+    },
+    "graphTraversals": {
+      "title": "Graphtraversals",
+      "description": "An array of one or more unique 'graphTraversal' objects.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/GraphTraversal1"
+      }
+    },
+    "relatedLocations": {
+      "title": "Relatedlocations",
+      "description": "A set of locations relevant to this result.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Location"
+      }
+    },
+    "suppressions": {
+      "title": "Suppressions",
+      "description": "A set of suppressions relevant to this result.",
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Suppression"
+      }
+    },
+    "baselineState": {
+      "description": "The state of a result relative to a baseline of a previous run.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/BaselineState"
+        }
+      ]
+    },
+    "rank": {
+      "title": "Rank",
+      "description": "A number representing the priority or importance of the result.",
+      "default": -1.0,
+      "minimum": -1.0,
+      "maximum": 100.0,
+      "type": "number"
+    },
+    "attachments": {
+      "title": "Attachments",
+      "description": "A set of artifacts relevant to the result.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Attachment"
+      }
+    },
+    "hostedViewerUri": {
+      "title": "Hostedvieweruri",
+      "description": "An absolute URI at which the result can be viewed.",
+      "minLength": 1,
+      "maxLength": 65536,
+      "format": "uri",
+      "type": "string"
+    },
+    "workItemUris": {
+      "title": "Workitemuris",
+      "description": "The URIs of the work items associated with this result.",
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 65536,
+        "format": "uri"
+      }
+    },
+    "provenance": {
+      "title": "Provenance",
+      "description": "Information about how and when the result was detected.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ResultProvenance"
+        }
+      ]
+    },
+    "fixes": {
+      "title": "Fixes",
+      "description": "An array of 'fix' objects, each of which represents a proposed fix to the problem indicated by the result.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Fix"
+      }
+    },
+    "taxa": {
+      "title": "Taxa",
+      "description": "An array of references to taxonomy reporting descriptors that are applicable to the result.",
+      "default": [],
+      "minItems": 0,
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ReportingDescriptorReference"
+      }
+    },
+    "webRequest": {
+      "title": "Webrequest",
+      "description": "A web request associated with this result.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/WebRequest"
+        }
+      ]
+    },
+    "webResponse": {
+      "title": "Webresponse",
+      "description": "A web response associated with this result.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/WebResponse"
+        }
+      ]
+    },
+    "properties": {
+      "$ref": "#/definitions/SastResultProperties"
+    }
+  },
+  "required": [
+    "message",
+    "locations"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "PropertyBag": {
+      "title": "PropertyBag",
+      "description": "Key/value pairs that provide additional information about the object.",
+      "type": "object",
+      "properties": {
+        "tags": {
+          "title": "Tags",
+          "description": "A set of distinct strings that provide additional information.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ToolComponentReference": {
+      "title": "ToolComponentReference",
+      "description": "Identifies a particular toolComponent object, either the driver or an extension.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The 'name' property of the referenced toolComponent.",
+          "type": "string"
+        },
+        "index": {
+          "title": "Index",
+          "description": "An index into the referenced toolComponent in tool.extensions.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "guid": {
+          "title": "Guid",
+          "description": "The 'guid' property of the referenced toolComponent.",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+          "type": "string"
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the toolComponentReference.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReportingDescriptorReference": {
+      "title": "ReportingDescriptorReference",
+      "description": "Information about how to locate a relevant reporting descriptor.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "description": "The id of the descriptor.",
+          "type": "string"
+        },
+        "index": {
+          "title": "Index",
+          "description": "The index into an array of descriptors in toolComponent.ruleDescriptors, toolComponent.notificationDescriptors, or toolComponent.taxonomyDescriptors, depending on context.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "guid": {
+          "title": "Guid",
+          "description": "A guid that uniquely identifies the descriptor.",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+          "type": "string"
+        },
+        "toolComponent": {
+          "title": "Toolcomponent",
+          "description": "A reference used to locate the toolComponent associated with the descriptor.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ToolComponentReference"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the reporting descriptor reference.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Kind": {
+      "title": "Kind",
+      "description": "\n    A value that categorizes results by evaluation state.\n    ",
+      "enum": [
+        "notApplicable",
+        "pass",
+        "fail",
+        "review",
+        "open",
+        "informational"
+      ],
+      "type": "string"
+    },
+    "Level": {
+      "title": "Level",
+      "description": "\n    A value specifying the severity level of the notification.\n    ",
+      "enum": [
+        "none",
+        "note",
+        "warning",
+        "error"
+      ],
+      "type": "string"
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Encapsulates a message intended to be read by the end user.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Text",
+          "description": "A plain text message string.",
+          "type": "string"
+        },
+        "markdown": {
+          "title": "Markdown",
+          "description": "A Markdown message string.",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "description": "The identifier for this message.",
+          "type": "string"
+        },
+        "arguments": {
+          "title": "Arguments",
+          "description": "An array of strings to substitute into the message string.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the message.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ArtifactLocation": {
+      "title": "ArtifactLocation",
+      "description": "Specifies the location of an artifact.",
+      "type": "object",
+      "properties": {
+        "uri": {
+          "title": "Uri",
+          "description": "A string containing a valid relative or absolute URI.",
+          "type": "string"
+        },
+        "uriBaseId": {
+          "title": "Uribaseid",
+          "description": "A string which indirectly specifies the absolute URI with respect to which a relative URI in the \"uri\" property is interpreted.",
+          "type": "string"
+        },
+        "index": {
+          "title": "Index",
+          "description": "The index within the run artifacts array of the artifact object associated with the artifact location.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "description": {
+          "title": "Description",
+          "description": "A short description of the artifact location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the artifact location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Address": {
+      "title": "Address",
+      "description": "A physical or virtual address, or a range of addresses, in an 'addressable region' (memory or a binary file).",
+      "type": "object",
+      "properties": {
+        "absoluteAddress": {
+          "title": "Absoluteaddress",
+          "description": "The address expressed as a byte offset from the start of the addressable region.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "relativeAddress": {
+          "title": "Relativeaddress",
+          "description": "The address expressed as a byte offset from the absolute address of the top-most parent object.",
+          "type": "integer"
+        },
+        "length": {
+          "title": "Length",
+          "description": "The number of bytes in this range of addresses.",
+          "type": "integer"
+        },
+        "kind": {
+          "title": "Kind",
+          "description": "An open-ended string that identifies the address kind. 'data', 'function', 'header','instruction', 'module', 'page', 'section', 'segment', 'stack', 'stackFrame', 'table' are well-known values.",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "description": "A name that is associated with the address, e.g., '.text'.",
+          "type": "string"
+        },
+        "fullyQualifiedName": {
+          "title": "Fullyqualifiedname",
+          "description": "A human-readable fully qualified name that is associated with the address.",
+          "type": "string"
+        },
+        "offsetFromParent": {
+          "title": "Offsetfromparent",
+          "description": "The byte offset of this address from the absolute or relative address of the parent object.",
+          "type": "integer"
+        },
+        "index": {
+          "title": "Index",
+          "description": "The index within run.addresses of the cached object for this address.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "parentIndex": {
+          "title": "Parentindex",
+          "description": "The index within run.addresses of the parent object.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the address.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "SastArtifactLocation": {
+      "title": "SastArtifactLocation",
+      "description": "Sast Artifact Location type.",
+      "type": "object",
+      "properties": {
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        },
+        "uriBaseId": {
+          "title": "Uribaseid",
+          "description": "A string which indirectly specifies the absolute URI with respect to which a relative URI in the \"uri\" property is interpreted.",
+          "type": "string"
+        },
+        "index": {
+          "title": "Index",
+          "description": "The index within the run artifacts array of the artifact object associated with the artifact location.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "description": {
+          "title": "Description",
+          "description": "A short description of the artifact location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the artifact location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "uri"
+      ],
+      "additionalProperties": false
+    },
+    "MultiformatMessageString": {
+      "title": "MultiformatMessageString",
+      "description": "A message string or message format string rendered in multiple formats.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Text",
+          "description": "A plain text message string or format string.",
+          "type": "string"
+        },
+        "markdown": {
+          "title": "Markdown",
+          "description": "A Markdown message string or format string.",
+          "type": "string"
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the message.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "ArtifactContent": {
+      "title": "ArtifactContent",
+      "description": "Represents the contents of an artifact.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Text",
+          "description": "UTF-8-encoded content from a text artifact.",
+          "type": "string"
+        },
+        "binary": {
+          "title": "Binary",
+          "description": "MIME Base64-encoded content from a binary artifact, or from a text artifact in its original encoding.",
+          "type": "string"
+        },
+        "rendered": {
+          "title": "Rendered",
+          "description": "An alternate rendered representation of the artifact (e.g., a decompiled representation of a binary region).",
+          "allOf": [
+            {
+              "$ref": "#/definitions/MultiformatMessageString"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the artifact content.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Region": {
+      "title": "Region",
+      "description": "A region within an artifact where a result was detected.",
+      "type": "object",
+      "properties": {
+        "startLine": {
+          "title": "Startline",
+          "description": "The line number of the first character in the region.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "startColumn": {
+          "title": "Startcolumn",
+          "description": "The column number of the first character in the region.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "endLine": {
+          "title": "Endline",
+          "description": "The line number of the last character in the region.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "endColumn": {
+          "title": "Endcolumn",
+          "description": "The column number of the character following the end of the region.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "charOffset": {
+          "title": "Charoffset",
+          "description": "The zero-based offset from the beginning of the artifact of the first character in the region.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "charLength": {
+          "title": "Charlength",
+          "description": "The length of the region in characters.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "byteOffset": {
+          "title": "Byteoffset",
+          "description": "The zero-based offset from the beginning of the artifact of the first byte in the region.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "byteLength": {
+          "title": "Bytelength",
+          "description": "The length of the region in bytes.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "snippet": {
+          "title": "Snippet",
+          "description": "The portion of the artifact contents within the specified region.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ArtifactContent"
+            }
+          ]
+        },
+        "message": {
+          "title": "Message",
+          "description": "A message relevant to the region.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "sourceLanguage": {
+          "title": "Sourcelanguage",
+          "description": "Specifies the source language, if any, of the portion of the artifact specified by the region object.",
+          "type": "string"
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the region.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "SastPhysicalLocation": {
+      "title": "SastPhysicalLocation",
+      "description": "Sast Physical Location type.",
+      "type": "object",
+      "properties": {
+        "address": {
+          "title": "Address",
+          "description": "The address of the location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Address"
+            }
+          ]
+        },
+        "artifactLocation": {
+          "$ref": "#/definitions/SastArtifactLocation"
+        },
+        "region": {
+          "$ref": "#/definitions/Region"
+        },
+        "contextRegion": {
+          "title": "Contextregion",
+          "description": "Specifies a portion of the artifact that encloses the region. Allows a viewer to display additional context around the region.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Region"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the physical location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "artifactLocation"
+      ],
+      "additionalProperties": false
+    },
+    "LogicalLocation": {
+      "title": "LogicalLocation",
+      "description": "A logical location of a construct that produced a result.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "Identifies the construct in which the result occurred. For example, this property might contain the name of a class or a method.",
+          "type": "string"
+        },
+        "index": {
+          "title": "Index",
+          "description": "The index within the logical locations array.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "fullyQualifiedName": {
+          "title": "Fullyqualifiedname",
+          "description": "The human-readable fully qualified name of the logical location.",
+          "type": "string"
+        },
+        "decoratedName": {
+          "title": "Decoratedname",
+          "description": "The machine-readable name for the logical location, such as a mangled function name provided by a C++ compiler that encodes calling convention, return type and other details along with the function name.",
+          "type": "string"
+        },
+        "parentIndex": {
+          "title": "Parentindex",
+          "description": "Identifies the index of the immediate parent of the construct in which the result was detected. For example, this property might point to a logical location that represents the namespace that holds a type.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "kind": {
+          "title": "Kind",
+          "description": "The type of construct this logical location component refers to. Should be one of 'function', 'member', 'module', 'namespace', 'parameter', 'resource', 'returnType', 'type', 'variable', 'object', 'array', 'property', 'value', 'element', 'text', 'attribute', 'comment', 'declaration', 'dtd' or 'processingInstruction', if any of those accurately describe the construct.",
+          "type": "string"
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the logical location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "LocationRelationship": {
+      "title": "LocationRelationship",
+      "description": "Information about the relation of one location to another.",
+      "type": "object",
+      "properties": {
+        "target": {
+          "title": "Target",
+          "description": "A reference to the related location.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "kinds": {
+          "title": "Kinds",
+          "description": "A set of distinct strings that categorize the relationship. Well-known kinds include 'includes', 'isIncludedBy' and 'relevant'.",
+          "default": [
+            "relevant"
+          ],
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of the location relationship.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the location relationship.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "SastLocation": {
+      "title": "SastLocation",
+      "description": "Sast Location type.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "description": "Value that distinguishes this location from all other locations within a single result object.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "physicalLocation": {
+          "$ref": "#/definitions/SastPhysicalLocation"
+        },
+        "logicalLocations": {
+          "title": "Logicallocations",
+          "description": "The logical locations associated with the result.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LogicalLocation"
+          }
+        },
+        "message": {
+          "title": "Message",
+          "description": "A message relevant to the location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "annotations": {
+          "title": "Annotations",
+          "description": "A set of regions relevant to the location.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Region"
+          }
+        },
+        "relationships": {
+          "title": "Relationships",
+          "description": "An array of objects that describe relationships between this location and others.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocationRelationship"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "physicalLocation"
+      ],
+      "additionalProperties": false
+    },
+    "PhysicalLocation": {
+      "title": "PhysicalLocation",
+      "description": "A physical location relevant to a result. Specifies a reference to a programming artifact together with a range of bytes or characters within that artifact.",
+      "type": "object",
+      "properties": {
+        "address": {
+          "title": "Address",
+          "description": "The address of the location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Address"
+            }
+          ]
+        },
+        "artifactLocation": {
+          "title": "Artifactlocation",
+          "description": "The location of the artifact.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ArtifactLocation"
+            }
+          ]
+        },
+        "region": {
+          "title": "Region",
+          "description": "Specifies a portion of the artifact.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Region"
+            }
+          ]
+        },
+        "contextRegion": {
+          "title": "Contextregion",
+          "description": "Specifies a portion of the artifact that encloses the region. Allows a viewer to display additional context around the region.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Region"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the physical location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Location": {
+      "title": "Location",
+      "description": "A location within a programming artifact.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "description": "Value that distinguishes this location from all other locations within a single result object.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "physicalLocation": {
+          "title": "Physicallocation",
+          "description": "Identifies the artifact and region.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PhysicalLocation"
+            }
+          ]
+        },
+        "logicalLocations": {
+          "title": "Logicallocations",
+          "description": "The logical locations associated with the result.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LogicalLocation"
+          }
+        },
+        "message": {
+          "title": "Message",
+          "description": "A message relevant to the location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "annotations": {
+          "title": "Annotations",
+          "description": "A set of regions relevant to the location.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Region"
+          }
+        },
+        "relationships": {
+          "title": "Relationships",
+          "description": "An array of objects that describe relationships between this location and others.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LocationRelationship"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "StackFrame": {
+      "title": "StackFrame",
+      "description": "A function call within a stack trace.",
+      "type": "object",
+      "properties": {
+        "location": {
+          "title": "Location",
+          "description": "The location to which this stack frame refers.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Location"
+            }
+          ]
+        },
+        "module": {
+          "title": "Module",
+          "description": "The name of the module that contains the code of this stack frame.",
+          "type": "string"
+        },
+        "threadId": {
+          "title": "Threadid",
+          "description": "The thread identifier of the stack frame.",
+          "type": "integer"
+        },
+        "parameters": {
+          "title": "Parameters",
+          "description": "The parameters of the call that is executing.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the stack frame.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Stack": {
+      "title": "Stack",
+      "description": "A call stack that is relevant to a result.",
+      "type": "object",
+      "properties": {
+        "message": {
+          "title": "Message",
+          "description": "A message relevant to this call stack.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "frames": {
+          "title": "Frames",
+          "description": "An array of stack frames that represents a sequence of calls, rendered in reverse chronological order, that comprise the call stack.",
+          "minItems": 0,
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StackFrame"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the stack.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "frames"
+      ],
+      "additionalProperties": false
+    },
+    "Importance": {
+      "title": "Importance",
+      "description": "\n    Specifies the importance of this location in understanding the code flow in which it occurs. The order from most to least important is \"essential\", \"important\", \"unimportant\". Default: \"important\".\n    ",
+      "enum": [
+        "important",
+        "essential",
+        "unimportant"
+      ],
+      "type": "string"
+    },
+    "WebRequest": {
+      "title": "WebRequest",
+      "description": "Describes an HTTP request.",
+      "type": "object",
+      "properties": {
+        "index": {
+          "title": "Index",
+          "description": "The index within the run.webRequests array of the request object associated with this result.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "protocol": {
+          "title": "Protocol",
+          "description": "The request protocol. Example: 'http'.",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "description": "The request version. Example: '1.1'.",
+          "type": "string"
+        },
+        "target": {
+          "title": "Target",
+          "description": "The target of the request.",
+          "type": "string"
+        },
+        "method": {
+          "title": "Method",
+          "description": "The HTTP method. Well-known values are 'GET', 'PUT', 'POST', 'DELETE', 'PATCH', 'HEAD', 'OPTIONS', 'TRACE', 'CONNECT'.",
+          "type": "string"
+        },
+        "headers": {
+          "title": "Headers",
+          "description": "The request headers.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "parameters": {
+          "title": "Parameters",
+          "description": "The request parameters.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "title": "Body",
+          "description": "The body of the request.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ArtifactContent"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the request.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "WebResponse": {
+      "title": "WebResponse",
+      "description": "Describes the response to an HTTP request.",
+      "type": "object",
+      "properties": {
+        "index": {
+          "title": "Index",
+          "description": "The index within the run.webResponses array of the response object associated with this result.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "protocol": {
+          "title": "Protocol",
+          "description": "The response protocol. Example: 'http'.",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "description": "The response version. Example: '1.1'.",
+          "type": "string"
+        },
+        "statusCode": {
+          "title": "Statuscode",
+          "description": "The response status code. Example: 451.",
+          "type": "integer"
+        },
+        "reasonPhrase": {
+          "title": "Reasonphrase",
+          "description": "The response reason. Example: 'Not found'.",
+          "type": "string"
+        },
+        "headers": {
+          "title": "Headers",
+          "description": "The response headers.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "body": {
+          "title": "Body",
+          "description": "The body of the response.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ArtifactContent"
+            }
+          ]
+        },
+        "noResponseReceived": {
+          "title": "Noresponsereceived",
+          "description": "Specifies whether a response was received from the server.",
+          "default": false,
+          "type": "boolean"
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the response.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ThreadFlowLocation": {
+      "title": "ThreadFlowLocation",
+      "description": "A location visited by an analysis tool while simulating or monitoring the execution of a program.",
+      "type": "object",
+      "properties": {
+        "index": {
+          "title": "Index",
+          "description": "The index within the run threadFlowLocations array.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "location": {
+          "title": "Location",
+          "description": "The code location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Location"
+            }
+          ]
+        },
+        "stack": {
+          "title": "Stack",
+          "description": "The call stack leading to this location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Stack"
+            }
+          ]
+        },
+        "kinds": {
+          "title": "Kinds",
+          "description": "A set of distinct strings that categorize the thread flow location. Well-known kinds include 'acquire', 'release', 'enter', 'exit', 'call', 'return', 'branch', 'implicit', 'false', 'true', 'caution', 'danger', 'unknown', 'unreachable', 'taint', 'function', 'handler', 'lock', 'memory', 'resource', 'scope' and 'value'.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "taxa": {
+          "title": "Taxa",
+          "description": "An array of references to rule or taxonomy reporting descriptors that are applicable to the thread flow location.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReportingDescriptorReference"
+          }
+        },
+        "module": {
+          "title": "Module",
+          "description": "The name of the module that contains the code that is executing.",
+          "type": "string"
+        },
+        "state": {
+          "title": "State",
+          "description": "A dictionary, each of whose keys specifies a variable or expression, the associated value of which represents the variable or expression value. For an annotation of kind 'continuation', for example, this dictionary might hold the current assumed values of a set of global variables.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MultiformatMessageString"
+          }
+        },
+        "nestingLevel": {
+          "title": "Nestinglevel",
+          "description": "An integer representing a containment hierarchy within the thread flow.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "executionOrder": {
+          "title": "Executionorder",
+          "description": "An integer representing the temporal order in which execution reached this location.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "executionTimeUtc": {
+          "title": "Executiontimeutc",
+          "description": "The Coordinated Universal Time (UTC) date and time at which this location was executed.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "importance": {
+          "description": "Specifies the importance of this location in understanding the code flow in which it occurs. The order from most to least important is \"essential\", \"important\", \"unimportant\". Default: \"important\".",
+          "default": "important",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Importance"
+            }
+          ]
+        },
+        "webRequest": {
+          "title": "Webrequest",
+          "description": "A web request associated with this thread flow location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/WebRequest"
+            }
+          ]
+        },
+        "webResponse": {
+          "title": "Webresponse",
+          "description": "A web response associated with this thread flow location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/WebResponse"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the threadflow location.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ThreadFlow": {
+      "title": "ThreadFlow",
+      "description": "Describes a sequence of code locations that specify a path through a single thread of execution such as an operating system or fiber.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "description": "An string that uniquely identifies the threadFlow within the codeFlow in which it occurs.",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "description": "A message relevant to the thread flow.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "initialState": {
+          "title": "Initialstate",
+          "description": "Values of relevant expressions at the start of the thread flow that may change during thread flow execution.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MultiformatMessageString"
+          }
+        },
+        "immutableState": {
+          "title": "Immutablestate",
+          "description": "Values of relevant expressions at the start of the thread flow that remain constant.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MultiformatMessageString"
+          }
+        },
+        "locations": {
+          "title": "Locations",
+          "description": "A temporally ordered array of 'threadFlowLocation' objects, each of which describes a location visited by the tool while producing the result.",
+          "minItems": 1,
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ThreadFlowLocation"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the thread flow.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "locations"
+      ],
+      "additionalProperties": false
+    },
+    "CodeFlow": {
+      "title": "CodeFlow",
+      "description": "A set of threadFlows which together describe a pattern of code execution relevant to detecting a result.",
+      "type": "object",
+      "properties": {
+        "message": {
+          "title": "Message",
+          "description": "A message relevant to the code flow.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "threadFlows": {
+          "title": "Threadflows",
+          "description": "An array of one or more unique threadFlow objects, each of which describes the progress of a program through a thread of execution.",
+          "minItems": 1,
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ThreadFlow"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the code flow.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "threadFlows"
+      ],
+      "additionalProperties": false
+    },
+    "Node": {
+      "title": "Node",
+      "description": "Represents a node in a graph.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "description": "A string that uniquely identifies the node within its graph.",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "description": "A short description of the node.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "location": {
+          "title": "Location",
+          "description": "A code location associated with the node.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Location"
+            }
+          ]
+        },
+        "children": {
+          "title": "Children",
+          "description": "Array of child nodes.",
+          "default": [],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Node"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the node.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "Edge": {
+      "title": "Edge",
+      "description": "Represents a directed edge in a graph.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "description": "A string that uniquely identifies the edge within its graph.",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "description": "A short description of the edge.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "sourceNodeId": {
+          "title": "Sourcenodeid",
+          "description": "Identifies the source node (the node at which the edge starts).",
+          "type": "string"
+        },
+        "targetNodeId": {
+          "title": "Targetnodeid",
+          "description": "Identifies the target node (the node at which the edge ends).",
+          "type": "string"
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the edge.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "sourceNodeId",
+        "targetNodeId"
+      ],
+      "additionalProperties": false
+    },
+    "Graph": {
+      "title": "Graph",
+      "description": "A network of nodes and directed edges that describes some aspect of the structure of the code (for example, a call graph).",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of the graph.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "nodes": {
+          "title": "Nodes",
+          "description": "An array of node objects representing the nodes of the graph.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Node"
+          }
+        },
+        "edges": {
+          "title": "Edges",
+          "description": "An array of edge objects representing the edges of the graph.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Edge"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the graph.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "EdgeTraversal": {
+      "title": "EdgeTraversal",
+      "description": "Represents the traversal of a single edge during a graph traversal.",
+      "type": "object",
+      "properties": {
+        "edgeId": {
+          "title": "Edgeid",
+          "description": "Identifies the edge being traversed.",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "description": "A message to display to the user as the edge is traversed.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "finalState": {
+          "title": "Finalstate",
+          "description": "The values of relevant expressions after the edge has been traversed.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MultiformatMessageString"
+          }
+        },
+        "stepOverEdgeCount": {
+          "title": "Stepoveredgecount",
+          "description": "The number of edge traversals necessary to return from a nested graph.",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the edge traversal.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "edgeId"
+      ],
+      "additionalProperties": false
+    },
+    "GraphTraversal": {
+      "title": "GraphTraversal",
+      "description": "Represents a path through a graph.",
+      "type": "object",
+      "properties": {
+        "runGraphIndex": {
+          "title": "Rungraphindex",
+          "description": "The index within the run.graphs to be associated with the result.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "resultGraphIndex": {
+          "title": "Resultgraphindex",
+          "description": "The index within the result.graphs to be associated with the result.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this graph traversal.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "initialState": {
+          "title": "Initialstate",
+          "description": "Values of relevant expressions at the start of the graph traversal that may change during graph traversal.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MultiformatMessageString"
+          }
+        },
+        "immutableState": {
+          "title": "Immutablestate",
+          "description": "Values of relevant expressions at the start of the graph traversal that remain constant for the graph traversal.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MultiformatMessageString"
+          }
+        },
+        "edgeTraversals": {
+          "title": "Edgetraversals",
+          "description": "The sequences of edges traversed by this graph traversal.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EdgeTraversal"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the graph traversal.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "GraphTraversal1": {
+      "title": "GraphTraversal1",
+      "description": "Represents a path through a graph.",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/GraphTraversal"
+        },
+        {}
+      ]
+    },
+    "SuppressionKind": {
+      "title": "SuppressionKind",
+      "description": "\n    A value that categorizes suppression type.\n    ",
+      "enum": [
+        "external",
+        "inSource"
+      ],
+      "type": "string"
+    },
+    "State": {
+      "title": "State",
+      "description": "\n    A string that indicates the state of the suppression.\n    ",
+      "enum": [
+        "accepted",
+        "underReview",
+        "rejected"
+      ],
+      "type": "string"
+    },
+    "Suppression": {
+      "title": "Suppression",
+      "description": "A suppression that is relevant to a result.",
+      "type": "object",
+      "properties": {
+        "guid": {
+          "title": "Guid",
+          "description": "A stable, unique identifer for the suprression in the form of a GUID.",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+          "type": "string"
+        },
+        "kind": {
+          "description": "A string that indicates where the suppression is persisted.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/SuppressionKind"
+            }
+          ]
+        },
+        "state": {
+          "description": "A string that indicates the state of the suppression.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/State"
+            }
+          ]
+        },
+        "justification": {
+          "title": "Justification",
+          "description": "A string representing the justification for the suppression.",
+          "type": "string"
+        },
+        "location": {
+          "title": "Location",
+          "description": "Identifies the location associated with the suppression.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Location"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the suppression.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "BaselineState": {
+      "title": "BaselineState",
+      "description": "\n    The state of a result relative to a baseline of a previous run.\n    ",
+      "enum": [
+        "new",
+        "unchanged",
+        "updated",
+        "absent"
+      ],
+      "type": "string"
+    },
+    "Rectangle": {
+      "title": "Rectangle",
+      "description": "An area within an image.",
+      "type": "object",
+      "properties": {
+        "top": {
+          "title": "Top",
+          "description": "The Y coordinate of the top edge of the rectangle, measured in the image's natural units.",
+          "type": "number"
+        },
+        "left": {
+          "title": "Left",
+          "description": "The X coordinate of the left edge of the rectangle, measured in the image's natural units.",
+          "type": "number"
+        },
+        "bottom": {
+          "title": "Bottom",
+          "description": "The Y coordinate of the bottom edge of the rectangle, measured in the image's natural units.",
+          "type": "number"
+        },
+        "right": {
+          "title": "Right",
+          "description": "The X coordinate of the right edge of the rectangle, measured in the image's natural units.",
+          "type": "number"
+        },
+        "message": {
+          "title": "Message",
+          "description": "A message relevant to the rectangle.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the rectangle.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Attachment": {
+      "title": "Attachment",
+      "description": "An artifact relevant to a result.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A message describing the role played by the attachment.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "artifactLocation": {
+          "title": "Artifactlocation",
+          "description": "The location of the attachment.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ArtifactLocation"
+            }
+          ]
+        },
+        "regions": {
+          "title": "Regions",
+          "description": "An array of regions of interest within the attachment.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Region"
+          }
+        },
+        "rectangles": {
+          "title": "Rectangles",
+          "description": "An array of rectangles specifying areas of interest within the image.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Rectangle"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the attachment.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "artifactLocation"
+      ],
+      "additionalProperties": false
+    },
+    "ResultProvenance": {
+      "title": "ResultProvenance",
+      "description": "Contains information about how and when a result was detected.",
+      "type": "object",
+      "properties": {
+        "firstDetectionTimeUtc": {
+          "title": "Firstdetectiontimeutc",
+          "description": "The Coordinated Universal Time (UTC) date and time at which the result was first detected. See \"Date/time properties\" in the SARIF spec for the required format.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastDetectionTimeUtc": {
+          "title": "Lastdetectiontimeutc",
+          "description": "The Coordinated Universal Time (UTC) date and time at which the result was most recently detected. See \"Date/time properties\" in the SARIF spec for the required format.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "firstDetectionRunGuid": {
+          "title": "Firstdetectionrunguid",
+          "description": "A GUID-valued string equal to the automationDetails.guid property of the run in which the result was first detected.",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+          "type": "string"
+        },
+        "lastDetectionRunGuid": {
+          "title": "Lastdetectionrunguid",
+          "description": "A GUID-valued string equal to the automationDetails.guid property of the run in which the result was most recently detected.",
+          "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$",
+          "type": "string"
+        },
+        "invocationIndex": {
+          "title": "Invocationindex",
+          "description": "The index within the run.invocations array of the invocation object which describes the tool invocation that detected the result.",
+          "default": -1,
+          "minimum": -1,
+          "type": "integer"
+        },
+        "conversionSources": {
+          "title": "Conversionsources",
+          "description": "An array of physicalLocation objects which specify the portions of an analysis tool's output that a converter transformed into the result.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhysicalLocation"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the result.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Replacement": {
+      "title": "Replacement",
+      "description": "The replacement of a single region of an artifact.",
+      "type": "object",
+      "properties": {
+        "deletedRegion": {
+          "title": "Deletedregion",
+          "description": "The region of the artifact to delete.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Region"
+            }
+          ]
+        },
+        "insertedContent": {
+          "title": "Insertedcontent",
+          "description": "The content to insert at the location specified by the 'deletedRegion' property.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ArtifactContent"
+            }
+          ]
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the replacement.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "deletedRegion"
+      ],
+      "additionalProperties": false
+    },
+    "ArtifactChange": {
+      "title": "ArtifactChange",
+      "description": "A change to a single artifact.",
+      "type": "object",
+      "properties": {
+        "artifactLocation": {
+          "title": "Artifactlocation",
+          "description": "The location of the artifact to change.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ArtifactLocation"
+            }
+          ]
+        },
+        "replacements": {
+          "title": "Replacements",
+          "description": "An array of replacement objects, each of which represents the replacement of a single region in a single artifact specified by 'artifactLocation'.",
+          "minItems": 1,
+          "uniqueItems": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Replacement"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the change.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "artifactLocation",
+        "replacements"
+      ],
+      "additionalProperties": false
+    },
+    "Fix": {
+      "title": "Fix",
+      "description": "A proposed fix for the problem represented by a result object. A fix specifies a set of artifacts to modify. For each artifact, it specifies a set of bytes to remove, and provides a set of new bytes to replace them.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A message that describes the proposed fix, enabling viewers to present the proposed change to an end user.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "artifactChanges": {
+          "title": "Artifactchanges",
+          "description": "One or more artifact changes that comprise a fix for a result.",
+          "minItems": 1,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ArtifactChange"
+          }
+        },
+        "properties": {
+          "title": "Properties",
+          "description": "Key/value pairs that provide additional information about the fix.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PropertyBag"
+            }
+          ]
+        }
+      },
+      "required": [
+        "artifactChanges"
+      ],
+      "additionalProperties": false
+    },
+    "BoostConfidence": {
+      "title": "BoostConfidence",
+      "description": "Result confidence.",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "not_set"
+      ],
+      "type": "string"
+    },
+    "SastResultProperties": {
+      "title": "SastResultProperties",
+      "description": "Sast Result properties type.",
+      "type": "object",
+      "properties": {
+        "tags": {
+          "title": "Tags",
+          "description": "A set of distinct strings that provide additional information.",
+          "default": [],
+          "minItems": 0,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "boost/confidence": {
+          "default": "not_set",
+          "allOf": [
+            {
+              "$ref": "#/definitions/BoostConfidence"
+            }
+          ]
+        },
+        "untrackedGitArtifact": {
+          "title": "Untrackedgitartifact",
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
