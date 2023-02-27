@@ -1338,7 +1338,7 @@ rules:
     name: cicd-scm-gh-org-high-default-member-permissions
     pretty_name: CI/CD - Privileged Default Member Permissions
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-org-high-default-member-permissions.html'
-  cicd-scm-gh-org-insecure-webook:
+  cicd-scm-gh-org-insecure-webhook:
     categories:
     - ALL
     - supply-chain
@@ -1348,7 +1348,7 @@ rules:
     - boost-hardened
     description: Checks for GitHub organizations with insecure webhooks.
     group: supply-chain-scm-weak-configuration
-    name: cicd-scm-gh-org-insecure-webook
+    name: cicd-scm-gh-org-insecure-webhook
     pretty_name: CI/CD - Insecure GitHub Webhooks
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-org-insecure-webhook.html'
   cicd-unpinned-dependencies:
