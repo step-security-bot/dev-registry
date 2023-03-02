@@ -13,7 +13,10 @@ config:
 setup:
   - name: download trivy
     environment:
-      VERSION: 0.34.0
+      VERSION: 0.37.3
+      LINUX_X86_64_SHA: 4a10870563e7db4bc6abfe1b74bf7f3921873ba9765d9169625419f8143cda90
+      LINUX_ARM64_SHA: 58fa4991d44244992387887ce652e405222572db2a83d38ed3b74bfbcf7417fc
+      MACOS_ARM64_SHA: f2908961ef21dc68be13550ca91e70b5abdbfe99752ab5406abbca09074de618
     run: |
       BINARY_URL="https://github.com/aquasecurity/trivy/releases/download/v${VERSION}"
       ARCH=$(uname -m)
@@ -21,15 +24,15 @@ setup:
       case "$(uname -sm)" in
         "Linux x86_64")
           BINARY_URL="${BINARY_URL}/trivy_${VERSION}_Linux-64bit.tar.gz"
-          SHA="53f176ca461412563cec7199798ad9acf8bbb38527c0d9a38f745442f022f111 trivy.tgz"
+          SHA="${LINUX_X86_64_SHA} trivy.tgz"
           ;;
         "Linux aarch64")
           BINARY_URL="${BINARY_URL}/trivy_${VERSION}_Linux-ARM64.tar.gz"
-          SHA="9cfd9efa36b69ad48a3b97843076d14ee848e240cd73c1b2da742d4de0bf568c trivy.tgz"
+          SHA="${LINUX_ARM64_SHA} trivy.tgz"
           ;;
         "Darwin arm64")
           BINARY_URL="${BINARY_URL}/trivy_${VERSION}_macOS-ARM64.tar.gz"
-          SHA="fda472bb726d0577ec92f6c5d25347f373c45ae069a6c7fb0a90133eaf21c26b trivy.tgz"
+          SHA="${MACOS_ARM64_SHA} trivy.tgz"
           ;;
         *)
           echo "Unsupported machine: ${OPTARG}"
@@ -54,7 +57,7 @@ steps:
       format: cyclonedx
       post-processor:
         docker:
-          image: public.ecr.aws/boostsecurityio/boost-scanner-trivy-sbom-1:11302df@sha256:6ed066e80c96349bcda7039f521fb4b75913b7ee877da1b8a7139869691be796
+          image: public.ecr.aws/boostsecurityio/boost-scanner-trivy-sbom:2077b09@sha256:9acea8e0566becbbf19a51b7de326cda23d124254091f38cf5e2132f298a1301
           command: process
           environment:
             PYTHONIOENCODING: utf-8

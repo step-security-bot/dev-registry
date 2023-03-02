@@ -14,7 +14,10 @@ config:
 setup:
   - name: download trivy
     environment:
-      VERSION: 0.32.1
+      VERSION: 0.37.3
+      LINUX_X86_64_SHA: 4a10870563e7db4bc6abfe1b74bf7f3921873ba9765d9169625419f8143cda90
+      LINUX_ARM64_SHA: 58fa4991d44244992387887ce652e405222572db2a83d38ed3b74bfbcf7417fc
+      MACOS_ARM64_SHA: f2908961ef21dc68be13550ca91e70b5abdbfe99752ab5406abbca09074de618
     run: |
       BINARY_URL="https://github.com/aquasecurity/trivy/releases/download/v${VERSION}"
       ARCH=$(uname -m)
@@ -22,15 +25,15 @@ setup:
       case "$(uname -sm)" in
         "Linux x86_64")
           BINARY_URL="${BINARY_URL}/trivy_${VERSION}_Linux-64bit.tar.gz"
-          SHA="ca0213f0c0f3b76498f1d8c20aabebeb7cedf8433ceacdef853c7841134e0033 trivy.tgz"
+          SHA="${LINUX_X86_64_SHA} trivy.tgz"
           ;;
         "Linux aarch64")
           BINARY_URL="${BINARY_URL}/trivy_${VERSION}_Linux-ARM64.tar.gz"
-          SHA="61275e16a148e4d29c566ae9794df5c8b24415e8417a3d971aea8da42b6b7f7d trivy.tgz"
+          SHA="${LINUX_ARM64_SHA} trivy.tgz"
           ;;
         "Darwin arm64")
           BINARY_URL="${BINARY_URL}/trivy_${VERSION}_macOS-ARM64.tar.gz"
-          SHA="b2efd5247e94cb5e1076faf46a757a42e0429d6a72d060efc1e41679faea3125 trivy.tgz"
+          SHA="${MACOS_ARM64_SHA} trivy.tgz"
           ;;
         *)
           echo "Unsupported machine: ${OPTARG}"
@@ -52,7 +55,7 @@ steps:
           IMAGE_NAME: ${BOOST_IMAGE_NAME}
           TRIVY_ADDITIONAL_ARGS: ${TRIVY_ADDITIONAL_ARGS---ignore-unfixed}
         run: |
-            $SETUP_PATH/trivy image ${TRIVY_ADDITIONAL_ARGS} --format json --security-checks vuln \
+            $SETUP_PATH/trivy image ${TRIVY_ADDITIONAL_ARGS} --format json --scanners vuln \
               --quiet ${BOOST_IMAGE_NAME}
       format: sarif
       post-processor:
