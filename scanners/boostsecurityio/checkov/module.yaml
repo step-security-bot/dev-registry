@@ -13,10 +13,10 @@ steps:
       command:
         docker:
           image: bridgecrew/checkov:2.2.63@sha256:6a3df079d623bd769f107fa76d9d1192381c898871c30c753e48c2625c49d23e
-          command: --directory . --output json --soft-fail --quiet
+          command: --directory . --output json --soft-fail --quiet --no-guide --skip-suppressions --skip-policy-download
           workdir: /src
       format: sarif
       post-processor:
         docker:
-          image: public.ecr.aws/boostsecurityio/boost-scanner-checkov:dc98f39@sha256:a9d82b71b656a605d08b86ee5beaff40421bb3642d3343fe8e0901e4d23e51db
+          image: public.ecr.aws/boostsecurityio/boost-scanner-checkov:763c6dd@sha256:3e461e2216c19e61a5ce22c832f6564948c8384e9fc3b69f15c1fe9907941ef4
           command: process
