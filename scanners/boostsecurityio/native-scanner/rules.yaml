@@ -1031,6 +1031,18 @@ rules:
     name: cicd-binary-artifacts-stored-in-scm
     pretty_name: CI/CD - Binary artifacts stored in SCM
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-binary-artifacts-stored-in-scm.html'
+  cicd-aws-github-oidc-sub:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-cicd-weak-configuration
+    - cloud-insecure-iam
+    - boost-hardened
+    description: Checks for IAM policies with lax validation of GitHub's OIDC subject claim.
+    group: supply-chain-cicd-weak-configuration
+    name: cicd-aws-github-oidc-sub
+    pretty_name: CI/CD - Weak GitHub OIDC Claim Verification
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-aws-github-oidc-sub.html'
   cicd-branch-protection-absent:
     categories:
     - ALL
@@ -1368,7 +1380,7 @@ rules:
       the code from the incoming PR is checked out.
     group: supply-chain-cicd-vulnerable-pipeline
     name: cicd-gha-risky-workflow-run-checkout
-    pretty_name: CI/CD - GitHub Action risky workflow_run usgae
+    pretty_name: CI/CD - GitHub Action risky workflow_run usage
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-gha-risky-workflow-run-checkout.html'
   cicd-sca-scanning-absent:
     categories:
@@ -1447,6 +1459,31 @@ rules:
     name: cicd-scm-gh-org-insecure-webhook
     pretty_name: CI/CD - Insecure GitHub Webhooks
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-org-insecure-webhook.html'
+  cicd-scm-gl-on-push-secret-detection:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Checks for GitLab projects that do not have the push rule for secret file detection enabled.
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-gl-on-push-secret-detection
+    pretty_name: CI/CD - GitLab On Push Secret File Detection Missing
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gl-on-push-secret-detection.html'
+  cicd-gl-deployment-approval:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-hardened
+    description: GitLab Environment does not require approvals for deployments.
+    group: supply-chain-cicd-weak-configuration
+    name: cicd-gl-deployment-approval
+    pretty_name: CI/CD - GitLab Environment no approvals required for deployments
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-gl-deployment-approval.html'
   cicd-unpinned-dependencies:
     categories:
     - ALL
