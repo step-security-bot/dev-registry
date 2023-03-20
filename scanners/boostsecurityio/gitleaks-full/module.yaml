@@ -1,0 +1,60 @@
+api_version: 1.0
+
+id: boostsecurityio/gitleaks-full
+name: BoostSecurity Gitleaks Git Scan
+namespace: boostsecurityio/gitleaks-full
+
+config:
+  support_diff_scan: false
+  require_full_history: true
+
+setup:
+- name: Download Gitleaks
+  environment:
+    VERSION: 8.16.1
+    LINUX_X86_64_SHA: b6296a7222b069fbe82e87633c2f2411499dbbe88d3eb7a5a59b7f59650d8082
+    LINUX_ARM64_SHA: 58596ad1ebb904859ab7e3bc4a016c3ce9c064ed851b83cf60a3be1e349fb7f7
+    MACOS_ARM64_SHA: 5bda389a4fb165da372dfbd9efec070f7d535427bb98a52c5005e192436ec710
+  run: |
+    BINARY_URL="https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}"
+    ARCH=$(uname -m)
+
+    case "$(uname -sm)" in
+      "Linux x86_64")
+        BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_linux_x64.tar.gz"
+        SHA="${LINUX_X86_64_SHA} gitleaks.tgz"
+        ;;
+      "Linux aarch64")
+        BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_linux_arm64.tar.gz"
+        SHA="${LINUX_ARM64_SHA} gitleaks.tgz"
+        ;;
+      "Darwin arm64")
+        BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_darwin_arm64.tar.gz"
+        SHA="${MACOS_ARM64_SHA} gitleaks.tgz"
+        ;;
+      *)
+        echo "Unsupported machine: ${OPTARG}"
+        exit 1
+        ;;
+    esac
+
+    curl -o gitleaks.tgz -fsSL "${BINARY_URL}"
+    echo "${SHA}" | sha256sum --check
+
+    tar --no-same-owner -zxf gitleaks.tgz gitleaks
+    rm gitleaks.tgz
+    chmod +x gitleaks
+
+steps:
+  - scan:
+      format: sarif
+      command:
+        environment:
+          GITLEAKS_CONFIG: ${GITLEAKS_CONFIG:-}
+        run: |
+          $SETUP_PATH/gitleaks detect --no-banner --exit-code 0 --report-format sarif --report-path /dev/stdout --source .
+
+      post-processor:
+        docker:
+          command: process --git-scan
+          image: public.ecr.aws/boostsecurityio/boost-scanner-gitleaks:17a8fa2@sha256:af16cd8a6c7e57e3d20bd67b97440249109777757311041dfcded36e46a84a4e
