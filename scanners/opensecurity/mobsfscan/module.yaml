@@ -1,0 +1,24 @@
+api_version: 1.0
+
+id: opensecurity/mobsfscan
+name: OpenSecurity mobsfscan
+namespace: opensecurity/mobsfscan
+
+config:
+  support_diff_scan: true
+  require_full_repo: false
+
+steps:
+  - scan:
+      command:
+        docker:
+          image: opensecurity/mobsfscan:latest@sha256:6a38cf44276658a2666af3341550797d409f7e33e3a594af9840fd5be4f852e2
+          command: --sarif --no-fail /src
+          workdir: /src
+          environment:
+            HOME: /tmp
+      format: sarif
+      post-processor:
+        docker:
+          image: public.ecr.aws/boostsecurityio/boost-scanner-semgrep:37a2507@sha256:23e93e66f3e91701a6af566c81b918fba459d1244205af4ab6e2c7fb14c08e69
+          command: process
