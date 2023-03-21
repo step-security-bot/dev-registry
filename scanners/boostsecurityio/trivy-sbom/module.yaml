@@ -14,6 +14,6 @@ steps:
         command:
             docker:
                 image: aquasec/trivy:0.37.3@sha256:906c909a441949317c252039ce8543ef79bcb9a59e7dd9b94e619191b82fedd2
-                command: fs --format=cyclonedx --cache-dir=/tmp/trivy/ .
+                command: fs --format=cyclonedx --license-full --cache-dir=/tmp/trivy/ .
                 workdir: /app
         format: cyclonedx

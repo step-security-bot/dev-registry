@@ -53,7 +53,7 @@ steps:
         environment:
           IMAGE_NAME: ${BOOST_IMAGE_NAME}
         run: |
-            $SETUP_PATH/trivy image ${TRIVY_ADDITIONAL_ARGS} --format cyclonedx ${BOOST_IMAGE_NAME}
+            $SETUP_PATH/trivy image ${TRIVY_ADDITIONAL_ARGS} --format cyclonedx --license-full ${BOOST_IMAGE_NAME}
       format: cyclonedx
       post-processor:
         docker:
