@@ -12,7 +12,7 @@ steps:
   - scan:
       command:
         docker:
-          image: bridgecrew/checkov:2.3.70@sha256:6107155c073bd969c39ea29291192459e077b2f934601683c3b33fd0fb2f9e5c
+          image: bridgecrew/checkov:2.3.108@sha256:6c1899251a8cee61dc4c34df61633f97042ec65e3eccbec57eadd449895829a5
           command: --file ./boost.tfplan.json --output json --soft-fail --compact --skip-download
           workdir: /src
       format: sarif

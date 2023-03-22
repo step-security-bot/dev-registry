@@ -334,6 +334,101 @@ rules:
     name: CKV2_AWS_41
     pretty_name: 'CKV2_AWS_41: Ensure an IAM role is attached to EC2 instance'
     ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_42:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV2_AWS_42
+    pretty_name: 'CKV2_AWS_42: Ensure AWS CloudFront distribution uses custom SSL
+      certificate'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_43:
+    categories:
+    - ALL
+    - cloud-resources-public-access
+    - boost-baseline
+    - boost-hardened
+    description: Check for publicly accessible AWS resources.
+    group: cloud-resources-public-access
+    name: CKV2_AWS_43
+    pretty_name: 'CKV2_AWS_43: Ensure S3 Bucket does not allow access to all Authenticated
+      users'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_44:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_44
+    pretty_name: 'CKV2_AWS_44: Ensure AWS route table with VPC peering does not contain
+      routes overly permissive to all traffic'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_45:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_45
+    pretty_name: 'CKV2_AWS_45: Ensure AWS Config recorder is enabled to record all
+      supported resources'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_46:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_46
+    pretty_name: 'CKV2_AWS_46: Ensure AWS Cloudfront Distribution with S3 have Origin
+      Access set to enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_47:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_47
+    pretty_name: 'CKV2_AWS_47: Ensure AWS CloudFront attached WAFv2 WebACL is configured
+      with AMR for Log4j Vulnerability'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_48:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_48
+    pretty_name: 'CKV2_AWS_48: Ensure AWS Config must record all possible resources'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_49:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV2_AWS_49
+    pretty_name: 'CKV2_AWS_49: Ensure AWS Database Migration Service endpoints have
+      SSL configured'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
   CKV2_AWS_5:
     categories:
     - ALL
@@ -346,6 +441,124 @@ rules:
     pretty_name: 'CKV2_AWS_5: Ensure that Security Groups are attached to another
       resource'
     ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_50:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_50
+    pretty_name: 'CKV2_AWS_50: Ensure AWS ElastiCache Redis cluster with Multi-AZ
+      Automatic Failover feature set to enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_51:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_51
+    pretty_name: 'CKV2_AWS_51: Ensure AWS API Gateway endpoints uses client certificate
+      authentication'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_52:
+    categories:
+    - ALL
+    - cloud-insecure-iam
+    - boost-baseline
+    - boost-hardened
+    description: Check for weak AWS permissions.
+    group: cloud-insecure-iam
+    name: CKV2_AWS_52
+    pretty_name: 'CKV2_AWS_52: Ensure AWS ElasticSearch/OpenSearch Fine-grained access
+      control is enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_53:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_53
+    pretty_name: 'CKV2_AWS_53: Ensure AWS API gateway request is validated'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_54:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_54
+    pretty_name: 'CKV2_AWS_54: Ensure AWS CloudFront distribution is using secure
+      SSL protocols for HTTPS communication'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_55:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_55
+    pretty_name: 'CKV2_AWS_55: Ensure AWS EMR cluster is configured with security
+      configuration'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_56:
+    categories:
+    - ALL
+    - cloud-insecure-iam
+    - boost-baseline
+    - boost-hardened
+    description: Check for weak AWS permissions.
+    group: cloud-insecure-iam
+    name: CKV2_AWS_56
+    pretty_name: 'CKV2_AWS_56: Ensure AWS Managed IAMFullAccess IAM policy is not
+      used.'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_57:
+    categories:
+    - ALL
+    - cloud-weak-secrets-management
+    - boost-baseline
+    - boost-hardened
+    description: Check that ensures best practices in AWS secrets management.
+    group: cloud-weak-secrets-management
+    name: CKV2_AWS_57
+    pretty_name: 'CKV2_AWS_57: Ensure Secrets Manager secrets should have automatic
+      rotation enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_58:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_58
+    pretty_name: 'CKV2_AWS_58: Ensure AWS Neptune cluster deletion protection is enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_59:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_59
+    pretty_name: 'CKV2_AWS_59: Ensure ElasticSearch/OpenSearch has dedicated master
+      node enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
   CKV2_AWS_6:
     categories:
     - ALL
@@ -356,6 +569,40 @@ rules:
     group: cloud-resources-public-access
     name: CKV2_AWS_6
     pretty_name: 'CKV2_AWS_6: Ensure that S3 bucket has a Public Access block'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_60:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_60
+    pretty_name: 'CKV2_AWS_60: Ensure RDS instance with copy tags to snapshots is
+      enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_61:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_61
+    pretty_name: 'CKV2_AWS_61: Ensure that an S3 bucket has a lifecycle configuration'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV2_AWS_62:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV2_AWS_62
+    pretty_name: 'CKV2_AWS_62: Ensure S3 buckets should have event notifications enabled'
     ref: https://www.checkov.io/5.Policy%20Index/all.html
   CKV2_AWS_7:
     categories:
@@ -3276,6 +3523,41 @@ rules:
     pretty_name: 'CKV_AWS_276: Ensure Data Trace is not enabled in API Gateway Method
       Settings'
     ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_277:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV_AWS_277
+    pretty_name: 'CKV_AWS_277: Ensure no security groups allow ingress from 0.0.0.0:0
+      to port -1'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_278:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_278
+    pretty_name: 'CKV_AWS_278: Ensure MemoryDB snapshot is encrypted by KMS using
+      a customer managed Key (CMK)'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_279:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_279
+    pretty_name: 'CKV_AWS_279: Ensure Neptune snapshot is securely encrypted'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
   CKV_AWS_28:
     categories:
     - ALL
@@ -3286,6 +3568,122 @@ rules:
     group: cloud-weak-configuration
     name: CKV_AWS_28
     pretty_name: 'CKV_AWS_28: Ensure Dynamodb point in time recovery (backup) is enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_280:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_280
+    pretty_name: 'CKV_AWS_280: Ensure Neptune snapshot is encrypted by KMS using a
+      customer managed Key (CMK)'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_281:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_281
+    pretty_name: 'CKV_AWS_281: Ensure RedShift snapshot copy is encrypted by KMS using
+      a customer managed Key (CMK)'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_282:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_282
+    pretty_name: 'CKV_AWS_282: Ensure that Redshift Serverless namespace is encrypted
+      by KMS using a customer managed key (CMK)'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_283:
+    categories:
+    - ALL
+    - cloud-insecure-iam
+    - boost-baseline
+    - boost-hardened
+    description: Check for weak AWS permissions.
+    group: cloud-insecure-iam
+    name: CKV_AWS_283
+    pretty_name: 'CKV_AWS_283: Ensure no IAM policies documents allow ALL or any AWS
+      principal permissions to the resource'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_284:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV_AWS_284
+    pretty_name: 'CKV_AWS_284: Ensure State Machine has X-Ray tracing enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_285:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV_AWS_285
+    pretty_name: 'CKV_AWS_285: Ensure State Machine has execution history logging
+      enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_286:
+    categories:
+    - ALL
+    - cloud-insecure-iam
+    - boost-baseline
+    - boost-hardened
+    description: Check for weak AWS permissions.
+    group: cloud-insecure-iam
+    name: CKV_AWS_286
+    pretty_name: 'CKV_AWS_286: Ensure IAM policies does not allow privilege escalation'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_287:
+    categories:
+    - ALL
+    - cloud-insecure-iam
+    - boost-baseline
+    - boost-hardened
+    description: Check for weak AWS permissions.
+    group: cloud-insecure-iam
+    name: CKV_AWS_287
+    pretty_name: 'CKV_AWS_287: Ensure IAM policies does not allow credentials exposure'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_288:
+    categories:
+    - ALL
+    - cloud-insecure-iam
+    - boost-baseline
+    - boost-hardened
+    description: Check for weak AWS permissions.
+    group: cloud-insecure-iam
+    name: CKV_AWS_288
+    pretty_name: 'CKV_AWS_288: Ensure IAM policies does not allow data exfiltration'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_289:
+    categories:
+    - ALL
+    - cloud-insecure-iam
+    - boost-baseline
+    - boost-hardened
+    description: Check for weak AWS permissions.
+    group: cloud-insecure-iam
+    name: CKV_AWS_289
+    pretty_name: 'CKV_AWS_289: Ensure IAM policies does not allow permissions management
+      / resource exposure without constraints'
     ref: https://www.checkov.io/5.Policy%20Index/all.html
   CKV_AWS_29:
     categories:
@@ -3298,6 +3696,121 @@ rules:
     name: CKV_AWS_29
     pretty_name: 'CKV_AWS_29: Ensure all data stored in the Elasticache Replication
       Group is securely encrypted at rest'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_290:
+    categories:
+    - ALL
+    - cloud-insecure-iam
+    - boost-baseline
+    - boost-hardened
+    description: Check for weak AWS permissions.
+    group: cloud-insecure-iam
+    name: CKV_AWS_290
+    pretty_name: 'CKV_AWS_290: Ensure IAM policies does not allow write access without
+      constraints'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_291:
+    categories:
+    - ALL
+    - cloud-resources-public-access
+    - boost-baseline
+    - boost-hardened
+    description: Check for publicly accessible AWS resources.
+    group: cloud-resources-public-access
+    name: CKV_AWS_291
+    pretty_name: 'CKV_AWS_291: Ensure MSK nodes are private'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_292:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_292
+    pretty_name: 'CKV_AWS_292: Ensure DocDB Global Cluster is encrypted at rest (default
+      is unencrypted)'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_293:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV_AWS_293
+    pretty_name: 'CKV_AWS_293: Ensure that AWS database instances have deletion protection
+      enabled'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_294:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_294
+    pretty_name: 'CKV_AWS_294: Ensure Cloud Trail Event Data Store uses CMK'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_295:
+    categories:
+    - ALL
+    - stored-secrets
+    - boost-baseline
+    - boost-hardened
+    description: stored-secrets
+    group: stored-secrets
+    name: CKV_AWS_295
+    pretty_name: 'CKV_AWS_295: Ensure DataSync Location Object Storage doesn''t expose
+      secrets'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_296:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_296
+    pretty_name: 'CKV_AWS_296: Ensure DMS endpoint uses Customer Managed Key (CMK)'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_297:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_297
+    pretty_name: 'CKV_AWS_297: Ensure EventBridge Scheduler Schedule uses Customer
+      Managed Key (CMK)'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_298:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_298
+    pretty_name: 'CKV_AWS_298: Ensure DMS S3 uses Customer Managed Key (CMK)'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_299:
+    categories:
+    - ALL
+    - cloud-unencrypted-resources
+    - boost-baseline
+    - boost-hardened
+    description: Check for unencrypted AWS resources.
+    group: cloud-unencrypted-resources
+    name: CKV_AWS_299
+    pretty_name: 'CKV_AWS_299: Ensure DMS S3 defines in-transit encryption'
     ref: https://www.checkov.io/5.Policy%20Index/all.html
   CKV_AWS_3:
     categories:
@@ -3321,6 +3834,75 @@ rules:
     name: CKV_AWS_30
     pretty_name: 'CKV_AWS_30: Ensure all data stored in the Elasticache Replication
       Group is securely encrypted at transit'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_300:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV_AWS_300
+    pretty_name: 'CKV_AWS_300: Ensure S3 lifecycle configuration sets period for aborting
+      failed uploads'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_301:
+    categories:
+    - ALL
+    - cloud-resources-public-access
+    - boost-baseline
+    - boost-hardened
+    description: Check for publicly accessible AWS resources.
+    group: cloud-resources-public-access
+    name: CKV_AWS_301
+    pretty_name: 'CKV_AWS_301: Ensure that AWS Lambda function is not publicly accessible'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_302:
+    categories:
+    - ALL
+    - cloud-resources-public-access
+    - boost-baseline
+    - boost-hardened
+    description: Check for publicly accessible AWS resources.
+    group: cloud-resources-public-access
+    name: CKV_AWS_302
+    pretty_name: 'CKV_AWS_302: Ensure DB Snapshots are not Public'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_303:
+    categories:
+    - ALL
+    - cloud-resources-public-access
+    - boost-baseline
+    - boost-hardened
+    description: Check for publicly accessible AWS resources.
+    group: cloud-resources-public-access
+    name: CKV_AWS_303
+    pretty_name: 'CKV_AWS_303: Ensure SSM documents are not Public'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_304:
+    categories:
+    - ALL
+    - cloud-weak-secrets-management
+    - boost-baseline
+    - boost-hardened
+    description: Check that ensures best practices in AWS secrets management.
+    group: cloud-weak-secrets-management
+    name: CKV_AWS_304
+    pretty_name: 'CKV_AWS_304: Ensure Secrets Manager secrets should be rotated within
+      90 days'
+    ref: https://www.checkov.io/5.Policy%20Index/all.html
+  CKV_AWS_305:
+    categories:
+    - ALL
+    - cloud-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Check for misconfigurations in AWS resources.
+    group: cloud-weak-configuration
+    name: CKV_AWS_305
+    pretty_name: 'CKV_AWS_305: Ensure Cloudfront distribution has a default root object
+      configured'
     ref: https://www.checkov.io/5.Policy%20Index/all.html
   CKV_AWS_31:
     categories:
@@ -10280,3 +10862,4 @@ rules:
     name: CKV_YC_9
     pretty_name: 'CKV_YC_9: Ensure KMS symmetric key is rotated.'
     ref: https://www.checkov.io/5.Policy%20Index/all.html
+
