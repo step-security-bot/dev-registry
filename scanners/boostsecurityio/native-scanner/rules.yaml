@@ -1485,19 +1485,6 @@ rules:
     name: cicd-scm-gh-audit-log-branch-protection-overriden
     pretty_name: CI/CD - Audit Log - Branch Protection Overriden by Admin
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-audit-log-branch-protection-overriden.html'
-  cicd-scm-gh-audit-log-branch-protection-disabled:
-    categories:
-    - ALL
-    - supply-chain
-    - supply-chain-scm-weak-configuration
-    - supply-chain-cicd-weak-configuration
-    - boost-baseline
-    - boost-hardened
-    description: Checks for GitHub repositories where an Audit Log event indicates that an existing Branch Protection was disabled.
-    group: supply-chain-scm-weak-configuration
-    name: cicd-scm-gh-audit-log-branch-protection-disabled
-    pretty_name: CI/CD - Audit Log - Branch Protection Disabled
-    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-audit-log-branch-protection-disabled.html'
   cicd-scm-gl-on-push-secret-detection:
     categories:
     - ALL
