@@ -15,6 +15,7 @@ setup:
     LINUX_X86_64_SHA: b6296a7222b069fbe82e87633c2f2411499dbbe88d3eb7a5a59b7f59650d8082
     LINUX_ARM64_SHA: 58596ad1ebb904859ab7e3bc4a016c3ce9c064ed851b83cf60a3be1e349fb7f7
     MACOS_ARM64_SHA: 5bda389a4fb165da372dfbd9efec070f7d535427bb98a52c5005e192436ec710
+    MACOS_X86_64_SHA: 72165b9b843ebd4400a9d179f779b7c63c480ea63325b841b05f1076e6b8282b
   run: |
     BINARY_URL="https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}"
     ARCH=$(uname -m)
@@ -31,6 +32,10 @@ setup:
       "Darwin arm64")
         BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_darwin_arm64.tar.gz"
         SHA="${MACOS_ARM64_SHA} gitleaks.tgz"
+        ;;
+      "Darwin x86_64")
+        BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_darwin_x64.tar.gz"
+        SHA="${MACOS_X86_64_SHA} gitleaks.tgz"
         ;;
       *)
         echo "Unsupported machine: ${OPTARG}"
@@ -52,7 +57,8 @@ steps:
         environment:
           GITLEAKS_CONFIG: ${GITLEAKS_CONFIG:-}
         run: |
-          $SETUP_PATH/gitleaks detect --no-banner --exit-code 0 --report-format sarif --report-path /dev/stdout --source .
+          $SETUP_PATH/gitleaks detect --no-banner --exit-code 0 --report-format sarif --report-path $SETUP_PATH/gitleaks-output.sarif --source .
+          cat $SETUP_PATH/gitleaks-output.sarif
 
       post-processor:
         docker:
