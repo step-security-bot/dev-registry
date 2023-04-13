@@ -1,5 +1,5 @@
-* @boostsecurityio/developers
-.circleci/ @boostsecurityio/security @boostsecurityio/leads
-.github/ @boostsecurityio/security @boostsecurityio/leads
-.makefiles/ @boostsecurityio/security @boostsecurityio/leads
-Makefile @boostsecurityio/security @boostsecurityio/leads
+* @boost-community/security
+.circleci/ @boost-community/security @boost-community/leads
+.github/ @boost-community/security @boost-community/leads
+.makefiles/ @boost-community/security @boost-community/leads
+Makefile @boost-community/security @boost-community/leads
