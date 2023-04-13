@@ -1,0 +1,81 @@
+api_version: 1.0
+
+
+id: boostsecurityio/trivy-fs
+name: BoostSecurity Trivy (Filesystem scanning)
+namespace: boostsecurityio/trivy-fs
+
+
+config:
+  require_full_repo: true
+  support_diff_scan: true
+  include_files:
+    - buildscript-gradle.lockfile
+    - Cargo.lock
+    - composer.lock
+    - conan.lock
+    - Gemfile.lock
+    - go.mod
+    - gradle.lockfile
+    - mix.lock
+    - package-lock.json
+    - packages.lock.json
+    - Pipfile.lock
+    - pnpm-lock.yaml
+    - poetry.lock
+    - pom.xml
+    - pubspec.lock
+    - requirements.txt
+    - yarn.lock
+
+setup:
+  - name: download trivy
+    environment:
+      VERSION: 0.37.3
+      LINUX_X86_64_SHA: 4a10870563e7db4bc6abfe1b74bf7f3921873ba9765d9169625419f8143cda90
+      LINUX_ARM64_SHA: 58fa4991d44244992387887ce652e405222572db2a83d38ed3b74bfbcf7417fc
+      MACOS_ARM64_SHA: f2908961ef21dc68be13550ca91e70b5abdbfe99752ab5406abbca09074de618
+    run: |
+      BINARY_URL="https://github.com/aquasecurity/trivy/releases/download/v${VERSION}"
+      ARCH=$(uname -m)
+
+      case "$(uname -sm)" in
+        "Linux x86_64")
+          BINARY_URL="${BINARY_URL}/trivy_${VERSION}_Linux-64bit.tar.gz"
+          SHA="${LINUX_X86_64_SHA} trivy.tgz"
+          ;;
+        "Linux aarch64")
+          BINARY_URL="${BINARY_URL}/trivy_${VERSION}_Linux-ARM64.tar.gz"
+          SHA="${LINUX_ARM64_SHA} trivy.tgz"
+          ;;
+        "Darwin arm64")
+          BINARY_URL="${BINARY_URL}/trivy_${VERSION}_macOS-ARM64.tar.gz"
+          SHA="${MACOS_ARM64_SHA} trivy.tgz"
+          ;;
+        *)
+          echo "Unsupported machine: ${OPTARG}"
+          exit 1
+          ;;
+      esac
+
+      curl -o trivy.tgz -fsSL "${BINARY_URL}"
+      echo "${SHA}" | sha256sum --check
+
+      tar --no-same-owner -zxf trivy.tgz trivy
+      rm trivy.tgz
+      chmod +x trivy
+
+steps:
+  - scan:
+      command:
+        environment:
+          TRIVY_ADDITIONAL_ARGS: ${TRIVY_ADDITIONAL_ARGS---ignore-unfixed}
+        run: |
+          $SETUP_PATH/trivy fs ${TRIVY_ADDITIONAL_ARGS} --format json --scanners vuln --quiet .
+      format: sarif
+      post-processor:
+        docker:
+          image: public.ecr.aws/boostsecurityio/boost-scanner-trivy:60f6c43@sha256:b6832610688ddf8e0a7b14339aefdc8dbccd33b842cc9d192b73e770acf6f7fe
+          command: process
+          environment:
+            PYTHONIOENCODING: utf-8
