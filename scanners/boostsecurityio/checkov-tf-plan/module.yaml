@@ -12,11 +12,11 @@ steps:
   - scan:
       command:
         docker:
-          image: bridgecrew/checkov:2.3.108@sha256:6c1899251a8cee61dc4c34df61633f97042ec65e3eccbec57eadd449895829a5
+          image: bridgecrew/checkov:2.3.194@sha256:645641600a51fe65511ee03ea337b2903e868a832c5f4dbcf2b8d474510b3556
           command: --file ./boost.tfplan.json --output json --soft-fail --compact --skip-download
           workdir: /src
       format: sarif
       post-processor:
         docker:
-          image: public.ecr.aws/boostsecurityio/boost-scanner-checkov:c9a1b11@sha256:fb2e2b7abb910918c99875ce5234be6366b5d61b614eb19a06393cbb04d80c2f
+          image: public.ecr.aws/boostsecurityio/boost-scanner-checkov:d72b4bd@sha256:c9b2ca5609b84093fe845e47149906e9d60d41152b54579f57f5336995db428e
           command: process
