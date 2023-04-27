@@ -13,7 +13,7 @@ steps:
   - scan:
       command:
         docker:
-          image: returntocorp/semgrep:0.112@sha256:22cdfb541673843cf8950df1a9cc386237435517f41f0d40bd9b7e306076441f
+          image: returntocorp/semgrep:1.19.0@sha256:e77b2e4959680917f11c0fcfa923225afb250dd849e9b356e0eaf0b975929e2a
           command: semgrep scan --sarif --quiet --disable-version-check
           workdir: /src
           environment:
