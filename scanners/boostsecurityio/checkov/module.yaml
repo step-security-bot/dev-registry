@@ -12,11 +12,11 @@ steps:
   - scan:
       command:
         docker:
-          image: bridgecrew/checkov:2.2.63@sha256:6a3df079d623bd769f107fa76d9d1192381c898871c30c753e48c2625c49d23e
-          command: --directory . --output json --soft-fail --quiet --no-guide --skip-suppressions --skip-policy-download
+          image: bridgecrew/checkov:2.3.194@sha256:645641600a51fe65511ee03ea337b2903e868a832c5f4dbcf2b8d474510b3556
+          command: --directory . --output json --soft-fail --quiet --skip-download
           workdir: /src
       format: sarif
       post-processor:
         docker:
-          image: public.ecr.aws/boostsecurityio/boost-scanner-checkov:c722810@sha256:dcdc7a2abadb06e5d9b27d9005a3383ef9729c3aba2d1a4bd61dd215dbcf5ea7
+          image: public.ecr.aws/boostsecurityio/boost-scanner-checkov:d72b4bd@sha256:c9b2ca5609b84093fe845e47149906e9d60d41152b54579f57f5336995db428e
           command: process
