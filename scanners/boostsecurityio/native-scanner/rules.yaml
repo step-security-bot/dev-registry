@@ -1016,6 +1016,42 @@ rules:
     name: cert-insufficient-key-length
     pretty_name: Cert Insufficient Key Length
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/x509-cert-insufficient-key-length.html'
+  cicd-azure-devops-missing-authz-for-project:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-cicd-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Ensure Azure DevOps projects limit autorization scope of Azure Pipelines.
+    group: supply-chain-cicd-weak-configuration
+    name: cicd-azure-devops-missing-authz-for-project
+    pretty_name: CI/CD - Azure DevOps Project Limit Pipelines Authorization Scope
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-azure-devops-missing-authz-for-project.html'
+  cicd-azure-devops-variables-settable-at-queue-time:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-cicd-vulnerable-pipeline
+    - boost-baseline
+    - boost-hardened
+    description: Ensure Azure Pipelines limit variables that can be set a queue time.
+    group: supply-chain-cicd-vulnerable-pipeline
+    name: cicd-azure-devops-variables-settable-at-queue-time
+    pretty_name: CI/CD - Limit Azure Pipelines Variables
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-azure-devops-variables-settable-at-queue-time.html'
+  cicd-azure-devops-using-user-managed-agent-pools:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-cicd-weak-configuration
+    - boost-baseline
+    - boost-hardened
+    description: Ensure pipelines run using Microsoft-hosted agents
+    group: supply-chain-cicd-weak-configuration
+    name: cicd-azure-devops-using-user-managed-agent-pools
+    pretty_name: CI/CD - Azure Pipeline Self-Hosted Agent Pools
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-azure-devops-using-user-managed-agent-pools.html'
   cicd-binary-artifacts-stored-in-scm:
     categories:
     - ALL
