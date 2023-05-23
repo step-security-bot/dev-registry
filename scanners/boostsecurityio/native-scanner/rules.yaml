@@ -1085,6 +1085,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for repositories that do not have any Branch Protection
@@ -1099,6 +1100,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for Branch Protection config that allow deletion of the branch
@@ -1113,6 +1115,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for Branch Protection config that allow force pushes.
@@ -1178,6 +1181,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for Branch Protection config that are not enforced for admin
@@ -1272,6 +1276,7 @@ rules:
     - ALL
     - supply-chain
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub organizations that allow GitHub Actions to create
@@ -1324,6 +1329,7 @@ rules:
     - ALL
     - supply-chain
     - supply-chain-cicd-vulnerable-pipeline
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub Action workflow using pull_request_target where
@@ -1338,6 +1344,7 @@ rules:
     - ALL
     - supply-chain
     - supply-chain-cicd-vulnerable-pipeline
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub Action workflows where untrusted attributes controllable
@@ -1351,6 +1358,7 @@ rules:
     - ALL
     - supply-chain
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub Acton workflows that enables deprecated unsecure commands.
@@ -1363,6 +1371,7 @@ rules:
     - ALL
     - supply-chain
     - supply-chain-missing-artifact-integrity-verification
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for data evaluted from a curl command.
@@ -1375,6 +1384,7 @@ rules:
     - ALL
     - supply-chain
     - supply-chain-cicd-vulnerable-pipeline
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub Action workflows using actions/github-script with untrusted attributes.
@@ -1437,6 +1447,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub organizations that are not enforcing all members
@@ -1475,6 +1486,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub organizations with privileged default member permissions.
@@ -1488,6 +1500,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub organizations with insecure webhooks.
@@ -1501,6 +1514,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub organizations where an Audit Log event indicates that OAuth App restrictions were disabled.
@@ -1514,6 +1528,7 @@ rules:
     - supply-chain
     - supply-chain-scm-weak-configuration
     - supply-chain-cicd-weak-configuration
+    - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
     description: Checks for GitHub repositories where an Audit Log event indicates that Branch Protection was overriden using administrator's privilege.
