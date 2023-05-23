@@ -168,6 +168,38 @@ rules:
     description: <description>
     ref: <ref> # Reference URL of the rule
 ```
+### Leveraging rules from other rules namespace
+When defining the rules for a scanner module, it is sometimes desirable to reuse rules in some other modules. For example if the scanner module creates findings with the same rule id as for another exisitng scanner module, or a curated rules database.
+To reuse an existing rules database, import the rules files with the following syntax:
+```yaml
+import:
+  - boostsecurityio/semgrep
+  - <other realm>/<curated rules>
+```
+Multiple rules definition files can be imported. Note that the order of precedence is from bottom to top of the list. Which means if rules with the same rule id are defined in multiple of the imported rules file, the last loaded rule is the one that has precedence. That includes the rules defined locally. If a rule is defined locally has the same id as one of the rules imported, the rule defined locally has precedence. By leveraging the import mechanism it is thus possible to leveraging existing, curated rules definition, but redefine some rules to adapt to the scanner module specific behaviour.
+
+### Defining a default rule
+The scanner module might generate findings with rule id that haven't been included in the rules database. It can be the case for example if the scanner includes a very large number of rules, but it was deemed that only a portion of these were important in the context of the scanner module. When a finding was generated from a rule for which the id doesn't exist in the scanner module rules database, BoostSecurity processes the finding generically, by reporting the finding using the scanner original rule id and attributing the finding to a generic rule group and category. 
+It is usually desirable to have a scanner module specific default behaviour for rules that are not included in the scanner module rules database, rather than relying on the generic default behaviour. 
+A default rule can be included in the scanner module rules database. The default rule is declared at the bottom of the scanner module's rules database file with the following syntax:
+```yaml
+default:
+  CWE-UNKNOWN:   # rule id that will be reported by default>
+    categories:  # the categories for the unknown rule>
+    - ALL
+    - boost-hardened
+    group: top10-insecure-design
+    name: CWE-UNKNOWN   <name is the same as rule id>
+    pretty_name: CWE-UNKNOWN - Original rule did not map to a known CWE rule
+    description: The original rule could not be map to a CWE rule
+    ref: https://github.com/returntocorp/semgrep-rules/  # some reference
+```
+
+Note that the default rules can also be redefined locally if there are also default rules imported from other rules databases.
+
+
+### Redefining rules definition in SARIF
+
 ## Taxonomies
 Taxonomies are required for proper parsing and processing of results in the Boostsecurity platform. Sarif output without taxonomies will not be parsed by the platform.
 ### SAST
