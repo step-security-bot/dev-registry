@@ -1450,11 +1450,11 @@ rules:
     - supply-chain-cicd-severe-issues
     - boost-baseline
     - boost-hardened
-    description: Checks for GitHub organizations that are not enforcing all members
+    description: Checks for SCMs that are not enforcing all members
       to have 2FA enabled.
     group: supply-chain-scm-weak-configuration
     name: cicd-scm-2fa-enforcement-absent
-    pretty_name: CI/CD - Missing GitHub Organization 2FA Enforcement
+    pretty_name: CI/CD - Missing SCM 2FA Enforcement
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-2fa-enforcement-absent.html'
   cicd-scm-gh-app-with-elevated-permissions:
     categories:
