@@ -1,0 +1,57 @@
+api_version: 1.0
+
+id: boostsecurityio/bearer
+name: BoostSecurity Bearer
+namespace: boostsecurityio/bearer
+
+config:
+  support_diff_scan: false
+  require_full_repo: true
+
+setup:
+  - name: Download Bearer module
+    run: |
+    environment:
+      VERSION: 1.8.0
+      LINUX_X86_64_SHA: addbfc120350c3484f9174c79b35fc8ebe3005af87e869ddcd242b093da6e559
+      MACOS_AMD64_SHA: acf5341980f5e1dc1f6ccc28c70f1c812aeaffb381368f7a92a5dc583a40b22d
+      MACOS_ARM64_SHA: cea8f066198bfad3d5d7e4b4e61107f8b77e1902853e9336b3bbeaaa280fff26
+    run: |
+      BINARY_URL="https://github.com/Bearer/bearer/releases/download/v${VERSION}"
+      case "$(uname -sm)" in
+        "Linux x86_64")
+          BINARY_URL="${BINARY_URL}/bearer_${VERSION}_linux_amd64.tar.gz"
+          SHA="${LINUX_X86_64_SHA} bearer.tar.gz"
+          ;;
+        "Darwin amd64")
+          BINARY_URL="${BINARY_URL}/bearer_${VERSION}_darwin_amd64.tar.gz"
+          SHA="${MACOS_AMD64_SHA} bearer.tar.gz"
+          ;;
+        "Darwin arm64")
+          BINARY_URL="${BINARY_URL}/bearer_${VERSION}_darwin_arm64.tar.gz"
+          SHA="${MACOS_ARM64_SHA} bearer.tar.gz"
+          ;;
+        *)
+          echo "Unsupported machine: ${OPTARG}"
+          exit 1
+          ;;
+      esac
+
+      curl -o bearer.tar.gz -fsSL "${BINARY_URL}"
+      echo "${SHA}" | sha256sum --check
+
+      tar -zxvf bearer.tar.gz bearer
+      rm bearer.tar.gz
+
+      chmod +x bearer
+
+steps:
+  - scan:
+      command:
+        run: |
+          $SETUP_PATH/bearer scan --format json --report=privacy .
+      format: metadata
+      post-processor:
+        docker:
+          image: public.ecr.aws/boostsecurityio/boost-scanner-bearer:6477191@sha256:a17f9c7367aba5c7cfe3be3660555aab49b55fc8f90b087137f13dd16417a14b
+
