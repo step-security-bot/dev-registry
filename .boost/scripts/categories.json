@@ -1,0 +1,457 @@
+[
+  {
+    "name": "ALL",
+    "pretty_name": "All",
+    "ref": "https://docs.boostsecurity.net/rules/index.html"
+  },
+  {
+    "name": "boost-baseline",
+    "pretty_name": "BoostSecurity Baseline",
+    "ref": "https://docs.boostsecurity.net/rules/index.html"
+  },
+  {
+    "name": "boost-hardened",
+    "pretty_name": "BoostSecurity Hardened",
+    "ref": "https://docs.boostsecurity.net/rules/index.html"
+  },
+  {
+    "name": "cloud-insecure-iam",
+    "pretty_name": "Cloud - Insecure IAM Configuration",
+    "ref": "https://docs.boostsecurity.net/rules/index.html#cloud-misconfigurations"
+  },
+  {
+    "name": "cloud-resources-public-access",
+    "pretty_name": "Cloud Resources with Unrestricted Public Access",
+    "ref": "https://docs.boostsecurity.net/rules/index.html"
+  },
+  {
+    "name": "cloud-unencrypted-resources",
+    "pretty_name": "Cloud Unencrypted Resources",
+    "ref": "https://docs.boostsecurity.net/rules/index.html"
+  },
+  {
+    "name": "cloud-weak-configuration",
+    "pretty_name": "Cloud - Weak Configuration",
+    "ref": "https://docs.boostsecurity.net/rules/index.html#cloud-misconfigurations"
+  },
+  {
+    "name": "cloud-weak-secrets-management",
+    "pretty_name": "Cloud - Weak Secrets Management Configuration",
+    "ref": "https://docs.boostsecurity.net/rules/index.html#cloud-misconfigurations"
+  },
+  {
+    "name": "cwe-1004",
+    "pretty_name": "CWE-1004 - Sensitive Cookie Without 'HttpOnly' Flag",
+    "ref": "https://cwe.mitre.org/data/definitions/1004.html"
+  },
+  {
+    "name": "cwe-1022",
+    "pretty_name": "CWE-1022 - Missing Reverse-Tabnabbing Protection",
+    "ref": "https://cwe.mitre.org/data/definitions/1022.html"
+  },
+  {
+    "name": "cwe-1104",
+    "pretty_name": "CWE-1104 - Use of Unmaintained Third Party Components",
+    "ref": "https://cwe.mitre.org/data/definitions/1104.html"
+  },
+  {
+    "name": "cwe-116",
+    "pretty_name": "CWE-116 - Improper Encoding or Escaping of Output",
+    "ref": "https://cwe.mitre.org/data/definitions/116.html"
+  },
+  {
+    "name": "cwe-119",
+    "pretty_name": "CWE-119 - Improper Restriction of Operations within the Bounds of a Memory Buffer",
+    "ref": "https://cwe.mitre.org/data/definitions/119.html"
+  },
+  {
+    "name": "cwe-1236",
+    "pretty_name": "CWE-1236 - Improper Neutralization of Formula Elements in a CSV File",
+    "ref": "https://cwe.mitre.org/data/definitions/1236.html"
+  },
+  {
+    "name": "cwe-125",
+    "pretty_name": "CWE-125 - Out-of-bounds Read",
+    "ref": "https://cwe.mitre.org/data/definitions/125.html"
+  },
+  {
+    "name": "cwe-1254",
+    "pretty_name": "CWE-1254 - Incorrect Comparison Logic Granularity",
+    "ref": "https://cwe.mitre.org/data/definitions/1254.html"
+  },
+  {
+    "name": "cwe-1275",
+    "pretty_name": "CWE-1275 - Sensitive Cookie with Improper SameSite Attribute",
+    "ref": "https://cwe.mitre.org/data/definitions/1275.html"
+  },
+  {
+    "name": "cwe-1327",
+    "pretty_name": "CWE-1327 - Binding to an Unrestricted IP Address",
+    "ref": "https://cwe.mitre.org/data/definitions/1327.html"
+  },
+  {
+    "name": "cwe-1333",
+    "pretty_name": "CWE-1333 - Inefficient Regular Expression Complexity",
+    "ref": "https://cwe.mitre.org/data/definitions/1333.html"
+  },
+  {
+    "name": "cwe-1336",
+    "pretty_name": "CWE-1336 - Improper Neutralization of Special Elements Used in a Template Engine",
+    "ref": "https://cwe.mitre.org/data/definitions/1336.html"
+  },
+  {
+    "name": "cwe-185",
+    "pretty_name": "CWE-185 - Incorrect Regular Expression",
+    "ref": "https://cwe.mitre.org/data/definitions/185.html"
+  },
+  {
+    "name": "cwe-20",
+    "pretty_name": "CWE-20 - Improper Input Validation",
+    "ref": "https://cwe.mitre.org/data/definitions/20.html"
+  },
+  {
+    "name": "cwe-200",
+    "pretty_name": "CWE-200 - Exposure of Sensitive Information",
+    "ref": "https://cwe.mitre.org/data/definitions/200.html"
+  },
+  {
+    "name": "cwe-22",
+    "pretty_name": "CWE-22 - Path Traversal",
+    "ref": "https://cwe.mitre.org/data/definitions/22.html"
+  },
+  {
+    "name": "cwe-250",
+    "pretty_name": "CWE-250 - Execution with Unnecessary Privileges",
+    "ref": "https://cwe.mitre.org/data/definitions/250.html"
+  },
+  {
+    "name": "cwe-259",
+    "pretty_name": "CWE-259 - Use of Hard-coded Password",
+    "ref": "https://cwe.mitre.org/data/definitions/259.html"
+  },
+  {
+    "name": "cwe-269",
+    "pretty_name": "CWE-269 - Improper Privilege Management",
+    "ref": "https://cwe.mitre.org/data/definitions/269.html"
+  },
+  {
+    "name": "cwe-276",
+    "pretty_name": "CWE-276 - Incorrect Default Permissions",
+    "ref": "https://cwe.mitre.org/data/definitions/276.html"
+  },
+  {
+    "name": "cwe-284",
+    "pretty_name": "CWE-284 - Improper Access Control",
+    "ref": "https://cwe.mitre.org/data/definitions/284.html"
+  },
+  {
+    "name": "cwe-285",
+    "pretty_name": "CWE-285 - Improper Authorization",
+    "ref": "https://cwe.mitre.org/data/definitions/285.html"
+  },
+  {
+    "name": "cwe-287",
+    "pretty_name": "CWE-287 - Improper Authentication on Critical Resource",
+    "ref": "https://cwe.mitre.org/data/definitions/287.html"
+  },
+  {
+    "name": "cwe-295",
+    "pretty_name": "CWE-295 - Improper Certificate Validation",
+    "ref": "https://cwe.mitre.org/data/definitions/295.html"
+  },
+  {
+    "name": "cwe-297",
+    "pretty_name": "CWE-297 - Improper Validation of Certificate with Host Mismatch",
+    "ref": "https://cwe.mitre.org/data/definitions/297.html"
+  },
+  {
+    "name": "cwe-306",
+    "pretty_name": "CWE-306 - Missing Authentication",
+    "ref": "https://cwe.mitre.org/data/definitions/306.html"
+  },
+  {
+    "name": "cwe-310",
+    "pretty_name": "CWE-310 - Cryptographic Issues",
+    "ref": "https://cwe.mitre.org/data/definitions/310.html"
+  },
+  {
+    "name": "cwe-311",
+    "pretty_name": "CWE-311 - Missing Encryption of Sensitive Data",
+    "ref": "https://cwe.mitre.org/data/definitions/311.html"
+  },
+  {
+    "name": "cwe-319",
+    "pretty_name": "CWE-319 - Cleartext Transmission of Sensitive Information",
+    "ref": "https://cwe.mitre.org/data/definitions/319.html"
+  },
+  {
+    "name": "cwe-320",
+    "pretty_name": "CWE-320 - Key Management Errors",
+    "ref": "https://cwe.mitre.org/data/definitions/320.html"
+  },
+  {
+    "name": "cwe-326",
+    "pretty_name": "CWE-326 - Inadequate Encryption Strength",
+    "ref": "https://cwe.mitre.org/data/definitions/326.html"
+  },
+  {
+    "name": "cwe-327",
+    "pretty_name": "CWE-327 - Use of a Broken or Risky Cryptographic Algorithm",
+    "ref": "https://cwe.mitre.org/data/definitions/327.html"
+  },
+  {
+    "name": "cwe-328",
+    "pretty_name": "CWE-328 - Use of Weak Hash",
+    "ref": "https://cwe.mitre.org/data/definitions/328.html"
+  },
+  {
+    "name": "cwe-338",
+    "pretty_name": "CWE-338 - Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
+    "ref": "https://cwe.mitre.org/data/definitions/338.html"
+  },
+  {
+    "name": "cwe-345",
+    "pretty_name": "CWE-345 - Insufficient Verification of Data Authenticity",
+    "ref": "https://cwe.mitre.org/data/definitions/345.html"
+  },
+  {
+    "name": "cwe-346",
+    "pretty_name": "CWE-346 - Origin Validation Error",
+    "ref": "https://cwe.mitre.org/data/definitions/346.html"
+  },
+  {
+    "name": "cwe-352",
+    "pretty_name": "CWE-352 - Cross-Site Request Forgery (CSRF)",
+    "ref": "https://cwe.mitre.org/data/definitions/352.html"
+  },
+  {
+    "name": "cwe-369",
+    "pretty_name": "CWE-369 - Divide By Zero",
+    "ref": "https://cwe.mitre.org/data/definitions/369.html"
+  },
+  {
+    "name": "cwe-399",
+    "pretty_name": "CWE-399 - Resource Management Errors",
+    "ref": "https://cwe.mitre.org/data/definitions/399.html"
+  },
+  {
+    "name": "cwe-400",
+    "pretty_name": "CWE-400 - Uncontrolled Resource Consumption",
+    "ref": "https://cwe.mitre.org/data/definitions/400.html"
+  },
+  {
+    "name": "cwe-434",
+    "pretty_name": "CWE-434 - Unrestricted Upload of File",
+    "ref": "https://cwe.mitre.org/data/definitions/434.html"
+  },
+  {
+    "name": "cwe-470",
+    "pretty_name": "CWE-470 - Use of Externally-Controlled Input to Select Classes or Code",
+    "ref": "https://cwe.mitre.org/data/definitions/470.html"
+  },
+  {
+    "name": "cwe-489",
+    "pretty_name": "CWE-489 - Active Debug Code",
+    "ref": "https://cwe.mitre.org/data/definitions/489.html"
+  },
+  {
+    "name": "cwe-494",
+    "pretty_name": "CWE-494 - Download of Code Without Integrity Check",
+    "ref": "https://cwe.mitre.org/data/definitions/494.html"
+  },
+  {
+    "name": "cwe-502",
+    "pretty_name": "CWE-502 - Deserialization of Untrusted Data",
+    "ref": "https://cwe.mitre.org/data/definitions/502.html"
+  },
+  {
+    "name": "cwe-522",
+    "pretty_name": "CWE-522 - Insufficiently Protected Credentials",
+    "ref": "https://cwe.mitre.org/data/definitions/522.html"
+  },
+  {
+    "name": "cwe-565",
+    "pretty_name": "CWE-565 - Reliance on Cookies without Validation and Integrity Checking",
+    "ref": "https://cwe.mitre.org/data/definitions/565.html"
+  },
+  {
+    "name": "cwe-601",
+    "pretty_name": "CWE-601 - URL Redirection to Untrusted Site ('Open Redirect')",
+    "ref": "https://cwe.mitre.org/data/definitions/601.html"
+  },
+  {
+    "name": "cwe-611",
+    "pretty_name": "CWE-611 - Allowing XML External Entity Reference (XXE)",
+    "ref": "https://cwe.mitre.org/data/definitions/611.html"
+  },
+  {
+    "name": "cwe-614",
+    "pretty_name": "CWE-614 - Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
+    "ref": "https://cwe.mitre.org/data/definitions/614.html"
+  },
+  {
+    "name": "cwe-693",
+    "pretty_name": "CWE-693 - Protection Mechanism Failure",
+    "ref": "https://cwe.mitre.org/data/definitions/693.html"
+  },
+  {
+    "name": "cwe-703",
+    "pretty_name": "CWE-703 - Improper Check or Handling of Exceptional Conditions",
+    "ref": "https://cwe.mitre.org/data/definitions/703.html"
+  },
+  {
+    "name": "cwe-704",
+    "pretty_name": "CWE-704 - Incorrect Type Conversion or Cast",
+    "ref": "https://cwe.mitre.org/data/definitions/704.html"
+  },
+  {
+    "name": "cwe-706",
+    "pretty_name": "CWE-706 - Use of Incorrectly-Resolved Name or doc_reference",
+    "ref": "https://cwe.mitre.org/data/definitions/706.html"
+  },
+  {
+    "name": "cwe-732",
+    "pretty_name": "CWE-732 - Incorrect Permissions",
+    "ref": "https://cwe.mitre.org/data/definitions/732.html"
+  },
+  {
+    "name": "cwe-74",
+    "pretty_name": "CWE-74 - Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
+    "ref": "https://cwe.mitre.org/data/definitions/74.html"
+  },
+  {
+    "name": "cwe-77",
+    "pretty_name": "CWE-77 - Command Injection",
+    "ref": "https://cwe.mitre.org/data/definitions/77.html"
+  },
+  {
+    "name": "cwe-777",
+    "pretty_name": "CWE-777 - Regular Expression without Anchors",
+    "ref": "https://cwe.mitre.org/data/definitions/777.html"
+  },
+  {
+    "name": "cwe-778",
+    "pretty_name": "CWE-778 - Insufficient Logging",
+    "ref": "https://cwe.mitre.org/data/definitions/778.html"
+  },
+  {
+    "name": "cwe-78",
+    "pretty_name": "CWE-78 - OS Command Injection",
+    "ref": "https://cwe.mitre.org/data/definitions/78.html"
+  },
+  {
+    "name": "cwe-79",
+    "pretty_name": "CWE-79 - Cross-site Scripting (XSS)",
+    "ref": "https://cwe.mitre.org/data/definitions/79.html"
+  },
+  {
+    "name": "cwe-798",
+    "pretty_name": "CWE-798 - Use of Hard-coded Credentials",
+    "ref": "https://cwe.mitre.org/data/definitions/798.html"
+  },
+  {
+    "name": "cwe-862",
+    "pretty_name": "CWE-862 - Missing Authorization",
+    "ref": "https://cwe.mitre.org/data/definitions/862.html"
+  },
+  {
+    "name": "cwe-89",
+    "pretty_name": "CWE-89 - SQL Injection",
+    "ref": "https://cwe.mitre.org/data/definitions/89.html"
+  },
+  {
+    "name": "cwe-90",
+    "pretty_name": "CWE-90 - Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')",
+    "ref": "https://cwe.mitre.org/data/definitions/90.html"
+  },
+  {
+    "name": "cwe-913",
+    "pretty_name": "CWE-913 - Improper Control of Dynamically-Managed Code Resources",
+    "ref": "https://cwe.mitre.org/data/definitions/913.html"
+  },
+  {
+    "name": "cwe-915",
+    "pretty_name": "CWE-915 - Use of Incorrectly-Resolved Name or doc_reference",
+    "ref": "https://cwe.mitre.org/data/definitions/915.html"
+  },
+  {
+    "name": "cwe-918",
+    "pretty_name": "CWE-918 - Server-Side Request Forgery (SSRF)",
+    "ref": "https://cwe.mitre.org/data/definitions/918.html"
+  },
+  {
+    "name": "cwe-94",
+    "pretty_name": "CWE-94 - Improper Control of Generation of Code ('Code Injection')",
+    "ref": "https://cwe.mitre.org/data/definitions/94.html"
+  },
+  {
+    "name": "cwe-943",
+    "pretty_name": "CWE-943 - Sensitive Cookie with Improper SameSite Attribute",
+    "ref": "https://cwe.mitre.org/data/definitions/943.html"
+  },
+  {
+    "name": "cwe-95",
+    "pretty_name": "CWE-95 - Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')",
+    "ref": "https://cwe.mitre.org/data/definitions/95.html"
+  },
+  {
+    "name": "cwe-96",
+    "pretty_name": "CWE-96 - Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
+    "ref": "https://cwe.mitre.org/data/definitions/96.html"
+  },
+  {
+    "name": "cwe-top-25",
+    "pretty_name": "CWE Top 25",
+    "ref": "https://cwe.mitre.org/top25/archive/2021/2021_cwe_top25.html"
+  },
+  {
+    "name": "insufficient-logging",
+    "pretty_name": "Insufficient Logging",
+    "ref": "https://docs.boostsecurity.net/rules/index.html"
+  },
+  {
+    "name": "owasp-top-10",
+    "pretty_name": "OWASP Top 10",
+    "ref": "https://owasp.org/www-project-top-ten/"
+  },
+  {
+    "name": "stored-secrets",
+    "pretty_name": "Stored Secrets",
+    "ref": "https://docs.boostsecurity.net/rules/index.html"
+  },
+  {
+    "name": "supply-chain",
+    "pretty_name": "Supply Chain",
+    "ref": "https://medium.com/boostsecurity"
+  },
+  {
+    "name": "supply-chain-cicd-severe-issues",
+    "pretty_name": "Supply Chain - Severe Issues",
+    "ref": "https://docs.boostsecurity.io/misconfig/cicd/index.html"
+  },
+  {
+    "name": "supply-chain-cicd-vulnerable-pipeline",
+    "pretty_name": "Supply Chain - Vulnerable CI/CD Pipeline",
+    "ref": " https://docs.boostsecurity.net/rules/index.html#cicd-supply-chain"
+  },
+  {
+    "name": "supply-chain-cicd-weak-configuration",
+    "pretty_name": "Supply Chain - Weak CI/CD Configuration",
+    "ref": " https://docs.boostsecurity.net/rules/index.html#cicd-supply-chain"
+  },
+  {
+    "name": "supply-chain-missing-artifact-integrity-verification",
+    "pretty_name": "Supply Chain - Missing Artifact Integrity Verification",
+    "ref": " https://docs.boostsecurity.net/rules/index.html#cicd-supply-chain"
+  },
+  {
+    "name": "supply-chain-scm-weak-configuration",
+    "pretty_name": "Supply Chain - Weak SCM Configuration",
+    "ref": " https://docs.boostsecurity.net/rules/index.html#cicd-supply-chain"
+  },
+  {
+    "name": "vulnerable-and-outdated-components",
+    "pretty_name": "Vulnerable and Outdated Components (SCA)",
+    "ref": "https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/"
+  }
+]

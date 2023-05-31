@@ -1,0 +1,116 @@
+groups:
+  top10-broken-access-control:
+    pretty_name: Broken Access Control
+    ref: https://owasp.org/Top10/A01_2021-Broken_Access_Control/
+    categories:
+    - cwe-22    # CWE-22 Improper Limitation of a Pathname to a Restricted Directory
+    - cwe-200   # CWE-200 Exposure of Sensitive Information to an Unauthorized Actor
+    - cwe-276   # CWE-276 Incorrect Default Permissions
+    - cwe-284   # CWE-284 Improper Access Control
+    - cwe-285   # CWE-285 Improper Authorization
+    - cwe-601   # CWE-601 URL Redirection to Untrusted Site ('Open Redirect')
+    - cwe-706   # CWE-706 Use of Incorrectly-Resolved Name or Reference
+    - cwe-732   # CWE-732 Incorrect Permission Assignment for Critical Resource
+    - cwe-862   # CWE-862 Missing Authorization
+    - cwe-913   # CWE-913 Improper Control of Dynamically-Managed Code Resources
+    - cwe-1275  # CWE-1275 Sensitive Cookie with Improper SameSite Attribute
+    - cwe-1327  # CWE-1327 inding to an Unrestricted IP Address
+  top10-crypto-failures:
+    pretty_name: Cryptographic Failures
+    ref: https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
+    categories:
+    - cwe-310   # CWE-310 Cryptographic Issues
+    - cwe-319   # CWE-319 Cleartext Transmission of Sensitive Information
+    - cwe-320   # CWE-320 Key Management Errors
+    - cwe-326   # CWE-326 Inadequate Encryption Strength
+    - cwe-327   # CWE-327 Use of a Broken or Risky Cryptographic Algorithm
+    - cwe-328   # CWE-328 Reversible One-Way Hash
+    - cwe-338   # CWE-338 Use of Cryptographically Weak Pseudo-Random Number Generator(PRNG)
+    - cwe-352   # CWE-352 Cross-Site Request Forgery (CSRF)
+    legacy_groups:
+    - "Insecure Crypto"
+  top10-injection:
+    pretty_name: Injection
+    ref: https://owasp.org/Top10/A03_2021-Injection/
+    categories:
+    - cwe-20   # CWE-20 Improper Input Validation
+    - cwe-74   # CWE-74 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')
+    - cwe-77   # CWE-77 Improper Neutralization of Special Elements used in a Command ('Command Injection')
+    - cwe-78   # CWE-78 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')
+    - cwe-79   # CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+    - cwe-89   # CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+    - cwe-90   # CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')
+    - cwe-94   # CWE-94 Improper Control of Generation of Code ('Code Injection')
+    - cwe-95   # CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')
+    - cwe-96   # CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')
+    - cwe-116  # CWE-116 Improper Encoding or Escaping of Output
+    - cwe-470  # CWE-470 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')
+    - cwe-943  # CWE-943 Improper Neutralization of Special Elements in Data Query Logic
+    - cwe-1236 # CWE-1236 Improper Neutralization of Formula Elements in a CSV File
+    - cwe-1336 # CWE-1336 Improper Neutralization of Special Elements Used in a Template Engine
+  top10-insecure-design:
+    pretty_name: Insecure Design
+    ref: https://owasp.org/Top10/A04_2021-Insecure_Design/
+    categories:
+    - cwe-125  # CWE-125 Out-of-bounds Read
+    - cwe-185  # CWE-185 Incorrect Regular Expression
+    - cwe-269  # CWE-269 Improper Privilege Management
+    - cwe-311  # CWE-311 Missing Encryption of Sensitive Data
+    - cwe-369  # CWE-369 Divide By Zero
+    - cwe-399  # CWE-399 Resource Management Errors
+    - cwe-400  # CWE-400 Uncontrolled Resource Consumption
+    - cwe-434  # CWE-434 Unrestricted Upload of File with Dangerous Type
+    - cwe-522  # CWE-522 Insufficiently Protected Credentials
+    - cwe-693  # CWE-693 Protection Mechanism Failure
+    - cwe-704  # CWE-704 Incorrect Type Conversion or Cast
+    - cwe-777  # CWE-777 Regular Expression without Anchors
+    - cwe-1254 # CWE-1254 Incorrect Comparison Logic Granularity
+  top10-security-misconfiguration:
+    pretty_name: Security Misconfiguration
+    ref: https://owasp.org/Top10/A05_2021-Security_Misconfiguration/
+    categories:
+    - cwe-250  # CWE-250 Execution with Unnecessary Privileges
+    - cwe-489  # CWE-489 Active Debug Code
+    - cwe-611  # CWE-611 Improper Restriction of XML External Entity Reference
+    - cwe-614  # CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute
+    - cwe-1004 # CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag
+    - cwe-1022 # CWE-1022 Use of Web Link to Untrusted Target with window.opener Access
+  top10-vulnerable-components:
+    pretty_name: Vulnerable and Outdated Components
+    ref: https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/
+    categories:
+    - cwe-1104  # CWE-1104 Use of Unmaintained Third Party Components
+    legacy_groups:
+    - "Known Vulnerable Components"
+  top10-id-authn-failures:
+    pretty_name: Identification and Authentication Failures
+    ref: https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/
+    categories:
+    - cwe-259  # CWE-259 Use of Hard-coded Password
+    - cwe-287  # CWE-287 Improper Authentication
+    - cwe-295  # CWE-295 Improper Certificate Validation
+    - cwe-297  # CWE-297 Improper Validation of Certificate with Host Mismatch
+    - cwe-306  # CWE-306 Missing Authentication for Critical Function
+    - cwe-346  # CWE-346 Origin Validation Error
+    - cwe-798  # CWE-798 Use of Hard-coded Credentials
+  top10-software-data-integrity-failures:
+    pretty_name: Software and Data Integrity Failures
+    ref: https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/
+    categories:
+    - cwe-345  # CWE-345 Insufficient Verification of Data Authenticity
+    - cwe-494  # CWE-494 Download of Code Without Integrity Check
+    - cwe-502  # CWE-502 Deserialization of Untrusted Data
+    - cwe-565  # CWE-565 Reliance on Cookies without Validation and Integrity Checking
+    - cwe-915  # CWE-915 Improperly Controlled Modification of Dynamically-Determined Object Attributes
+  top10-security-logging-monitoring-failures:
+    pretty_name: Security Logging and Monitoring Failures
+    ref: https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/
+    categories:
+    - cwe-778  # CWE-778 Insufficient Logging
+    legacy_groups:
+    - "Insufficient Logging"
+  top10-server-side-request-forgery:
+    pretty_name: Server-Side Request Forgery
+    ref: https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/
+    categories:
+      - cwe-918 # CWE-918 Server-Side Request Forgery (SSRF)

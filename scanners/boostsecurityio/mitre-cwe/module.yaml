@@ -1,0 +1,27 @@
+api_version: 1.0
+
+id: boostsecurityio/mitre-cwe
+name: BoostSecurity mitre-cwe
+namespace: boostsecurityio/mitre-cwe
+
+config:
+  support_diff_scan: true
+  include_files:
+    - .semgrep/*
+
+steps:
+  - scan:
+      command:
+        docker:
+          image: returntocorp/semgrep:1.19.0@sha256:e77b2e4959680917f11c0fcfa923225afb250dd849e9b356e0eaf0b975929e2a
+          command: semgrep scan --sarif --quiet --disable-version-check
+          workdir: /src
+          environment:
+            XDG_CONFIG_HOME: /tmp
+            HOME: /tmp
+            SEMGREP_RULES: ${SEMGREP_RULES:-auto}
+      format: sarif
+      post-processor:
+        docker:
+          image: public.ecr.aws/boostsecurityio/boost-scanner-semgrep:37a2507@sha256:23e93e66f3e91701a6af566c81b918fba459d1244205af4ab6e2c7fb14c08e69
+          command: process
