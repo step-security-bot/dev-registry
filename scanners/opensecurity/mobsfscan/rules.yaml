@@ -371,6 +371,19 @@ rules:
       and retrieves the contents of this URL, but it does not sufficiently ensure
       that the request is being sent to the expected destination.
     ref: https://github.com/returntocorp/semgrep-rules/
+  CWE-919:
+    categories:
+    - ALL
+    - cwe-top-25
+    - cwe-919
+    - boost-baseline
+    - boost-hardened
+    - owasp-top-10
+    group: top10-weakness-in-mobile-applications
+    name: CWE-919
+    pretty_name: CWE-919 - Weaknesses in Mobile Applications
+    description: The code introduces a vulnerability in the mobile application.
+    ref: https://github.com/returntocorp/semgrep-rules/
   CWE-601:
     categories:
     - ALL
