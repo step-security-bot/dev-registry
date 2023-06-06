@@ -375,11 +375,10 @@ rules:
     categories:
     - ALL
     - cwe-top-25
-    - cwe-919
     - boost-baseline
     - boost-hardened
     - owasp-top-10
-    group: top10-weakness-in-mobile-applications
+    group: top10-insecure-design
     name: CWE-919
     pretty_name: CWE-919 - Weaknesses in Mobile Applications
     description: The code introduces a vulnerability in the mobile application.
