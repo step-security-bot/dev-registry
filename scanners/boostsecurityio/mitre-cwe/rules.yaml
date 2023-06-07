@@ -9970,6 +9970,18 @@ rules:
     name: CWE-918
     pretty_name: 'CWE-918: Server-Side Request Forgery (SSRF)'
     ref: https://cwe.mitre.org/data/definitions/918.html
+  CWE-919:
+    categories:
+    - ALL
+    - cwe-top-25
+    - boost-baseline
+    - boost-hardened
+    - owasp-top-10
+    group: top10-insecure-design
+    name: CWE-919
+    pretty_name: CWE-919 - Weaknesses in Mobile Applications
+    description: The code introduces a vulnerability in the mobile application.
+    ref: https://cwe.mitre.org/data/definitions/919.html
   CWE-920:
     categories:
     - ALL
