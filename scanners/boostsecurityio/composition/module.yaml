@@ -12,8 +12,9 @@ steps:
   - scan:
       command:
         docker:
-          image:
+          image: public.ecr.aws/boostsecurityio/boost-scanner-composition:1a74079@sha256:78e932ed77a184ce79b73d0a552e5c7feaecae4f6880eecb56025176fbda75df
+          command: scan
+          workdir: /src
+          environment:
+            XDG_CONFIG_HOME: /tmp
       format: metadata
-      post-processor:
-        docker:
-          image: public.ecr.aws/boostsecurityio/boost-scanner-composition:13cd11c@sha256:b8fd77c9a51c82136be6e6b3d712db48815d937fdaf1b24283b2ec70c70b0946
