@@ -12,7 +12,7 @@ steps:
   - scan:
       command:
         docker:
-          image: public.ecr.aws/boostsecurityio/boost-scanner-composition:1a74079@sha256:78e932ed77a184ce79b73d0a552e5c7feaecae4f6880eecb56025176fbda75df
+          image: public.ecr.aws/boostsecurityio/boost-scanner-composition:1b7e1d7@sha256:6b5860b6b22455564d83f9834e2770920b03bfefe6f63c10d2f58e1032c35694
           command: scan
           workdir: /src
           environment:
