@@ -1,0 +1,20 @@
+api_version: 1.0
+
+id: boostsecurityio/composition
+name: BoostSecurity Composition Scanner
+namespace: boostsecurityio/composition
+
+config:
+  support_diff_scan: false
+  require_full_repo: true
+
+steps:
+  - scan:
+      command:
+        docker:
+          image: public.ecr.aws/boostsecurityio/boost-scanner-composition:1b7e1d7@sha256:6b5860b6b22455564d83f9834e2770920b03bfefe6f63c10d2f58e1032c35694
+          command: scan
+          workdir: /src
+          environment:
+            XDG_CONFIG_HOME: /tmp
+      format: metadata
