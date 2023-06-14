@@ -7,16 +7,57 @@ namespace: boostsecurityio/gitleaks
 config:
   support_diff_scan: true
 
+setup:
+- name: Download Gitleaks
+  environment:
+    VERSION: 8.16.4
+    LINUX_X86_64_SHA: 4166458d288be6453a9485665b8b5e6a50e6e29300207eb84fcb375c6b32702e
+    LINUX_ARM64_SHA: 5898566f11245cd5f20fc75995ac64a9af18f8a621b553e45f9001d2f36e21a1
+    MACOS_ARM64_SHA: 4ac90876951f79341a76c61e847394c25895a5c5bbf316453757f7b48651b869
+    MACOS_X86_64_SHA: 14328476a047d79d1a1159b100b0617479928a313584dbe02865fef2bae7d17b
+  run: |
+    BINARY_URL="https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}"
+    ARCH=$(uname -m)
+
+    case "$(uname -sm)" in
+      "Linux x86_64")
+        BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_linux_x64.tar.gz"
+        SHA="${LINUX_X86_64_SHA} gitleaks.tgz"
+        ;;
+      "Linux aarch64")
+        BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_linux_arm64.tar.gz"
+        SHA="${LINUX_ARM64_SHA} gitleaks.tgz"
+        ;;
+      "Darwin arm64")
+        BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_darwin_arm64.tar.gz"
+        SHA="${MACOS_ARM64_SHA} gitleaks.tgz"
+        ;;
+      "Darwin x86_64")
+        BINARY_URL="${BINARY_URL}/gitleaks_${VERSION}_darwin_x64.tar.gz"
+        SHA="${MACOS_X86_64_SHA} gitleaks.tgz"
+        ;;
+      *)
+        echo "Unsupported machine: ${OPTARG}"
+        exit 1
+        ;;
+    esac
+
+    curl -o gitleaks.tgz -fsSL "${BINARY_URL}"
+    echo "${SHA}" | sha256sum --check
+
+    tar --no-same-owner -zxf gitleaks.tgz gitleaks
+    rm gitleaks.tgz
+    chmod +x gitleaks
+
 steps:
   - scan:
       format: sarif
       command:
-        docker:
-          image: zricethezav/gitleaks:v8.16.4@sha256:3ddf2d050a6105f2efb4d5763d8df39c7c32dc8e7b040601999f85e7fc4084fe
-          command: detect --no-banner --exit-code 0 --redact --report-format sarif --report-path /dev/stdout --no-git --source .
-          workdir: /src
-          environment:
-            GITLEAKS_CONFIG: ${GITLEAKS_CONFIG:-}
+        environment:
+          GITLEAKS_CONFIG: ${GITLEAKS_CONFIG:-}
+        run: |
+          $SETUP_PATH/gitleaks detect --no-banner --exit-code 0 --redact --report-format sarif --report-path /dev/stdout --no-git --source .
+        workdir: /src
 
       post-processor:
         docker:
