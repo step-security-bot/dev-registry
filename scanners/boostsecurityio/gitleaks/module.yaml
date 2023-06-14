@@ -12,7 +12,7 @@ steps:
       format: sarif
       command:
         docker:
-          image: zricethezav/gitleaks:v8.15.0@sha256:ebf35c0373d275e0a65e424a35343a9c243bff848fc6c3340c410f59e6616cc8
+          image: zricethezav/gitleaks:v8.16.4@sha256:3ddf2d050a6105f2efb4d5763d8df39c7c32dc8e7b040601999f85e7fc4084fe
           command: detect --no-banner --exit-code 0 --redact --report-format sarif --report-path /dev/stdout --no-git --source .
           workdir: /src
           environment:
