@@ -22,7 +22,7 @@ steps:
   - scan:
       command:
         docker:
-          image: securego/gosec:2.16.0@sha256:89fc4a05b5326fdd07cb432cb974a3d3390e46e4ff9e17de28a308fe718761c4
+          image: securego/gosec:2.16.0@sha256:c63f91e8d6af392313b24de92d1e35fb61306ddb8231ef0f112e3e4f0d8e96fc
           command: -fmt sarif -no-fail -track-suppressions ./...
           workdir: /app
           environment:
