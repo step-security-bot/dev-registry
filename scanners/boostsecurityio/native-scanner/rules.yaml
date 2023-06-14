@@ -1432,11 +1432,12 @@ rules:
     categories:
     - ALL
     - supply-chain
-    - supply-chain-missing-artifact-integrity-verification
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
     - boost-baseline
     - boost-hardened
-    description: Checks for GitHub repositories that do not have Dependabot scanning
-      enabled.
+    description: Checks for SCM repositories that do not have SCA (Software Composition
+      Analysis) scanning enabled.
     group: supply-chain-cicd-weak-configuration
     name: cicd-sca-scanning-absent
     pretty_name: CI/CD - Missing Software Composition Analysis (SCA) Scanning
@@ -1508,6 +1509,42 @@ rules:
     name: cicd-scm-gh-org-insecure-webhook
     pretty_name: CI/CD - Insecure GitHub Webhooks
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-org-insecure-webhook.html'
+  cicd-scm-gh-org-number-of-owners:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-hardened
+    description: Checks for the number of GitHub Organization owners
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-gh-org-number-of-owners
+    pretty_name: CI/CD - Invalid Number of GitHub Organization Owners
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-org-number-of-owners.html'
+  cicd-scm-gh-repo-number-of-admins:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-hardened
+    description: Checks for the number of GitHub Repository contributors with administrative privileges.
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-gh-repo-number-of-admins
+    pretty_name: CI/CD - Invalid Number of GitHub Repository Admins
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-repo-number-of-admins.html'
+  cicd-scm-gh-repo-outside-collaborator-admin-maintainer:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - supply-chain-cicd-weak-configuration
+    - boost-hardened
+    description: Checks for GitHub repositories with privileged outside collaborators.
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-gh-repo-outside-collaborator-admin-maintainer
+    pretty_name: CI/CD - GitHub Repository with Privileged Outside Collaborators
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-repo-outside-collaborator-admin-maintainer.html'
   cicd-scm-gh-audit-log-oauth-app-restriction-disabled:
     categories:
     - ALL
@@ -1549,6 +1586,17 @@ rules:
     name: cicd-scm-gl-on-push-secret-detection
     pretty_name: CI/CD - GitLab On Push Secret File Detection Missing
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gl-on-push-secret-detection.html'
+  cicd-scm-private-forks:
+    categories:
+    - ALL
+    - supply-chain
+    - supply-chain-scm-weak-configuration
+    - boost-hardened
+    description: Checks for SCM configuration that allow contributors to fork private repositories.
+    group: supply-chain-scm-weak-configuration
+    name: cicd-scm-private-forks
+    pretty_name: CI/CD - SCM Private Forks
+    ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-private-forks.html'
   cicd-gl-deployment-approval:
     categories:
     - ALL
