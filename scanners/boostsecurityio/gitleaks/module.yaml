@@ -56,7 +56,8 @@ steps:
         environment:
           GITLEAKS_CONFIG: ${GITLEAKS_CONFIG:-}
         run: |
-          $SETUP_PATH/gitleaks detect --no-banner --exit-code 0 --redact --report-format sarif --report-path /dev/stdout --no-git --source .
+          $SETUP_PATH/gitleaks detect --no-banner --exit-code 0 --redact --report-format sarif --no-git --report-path $SETUP_PATH/gitleaks-output.sarif --source .
+          cat $SETUP_PATH/gitleaks-output.sarif
 
       post-processor:
         docker:
