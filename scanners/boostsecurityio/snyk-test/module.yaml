@@ -13,25 +13,29 @@ config:
 setup:
   - name: download snyk-cli
     environment:
-      VERSION: v1.1014.0
+      VERSION: v1.1179.0
     run: |
         if test -f /etc/os-release
         then grep -q alpine /etc/os-release && os=alpine || os=linux
-        else os=linux
+        else os=$(uname -s | tr '[:upper:]' '[:lower:]')
         fi
 
         case "$(uname -m)-${os}" in
           x86_64-linux)
             arch="snyk-linux"
-            sha="ad45378b3e137f45335ccbd09d39395f6acb60f2375a0971c9942cc959adda4f  snyk-linux"
+            sha="fe1341647fbc55b0df8592ed077d099ec7f951a64763290584fcd0496e9c4fab  snyk-linux"
             ;;
           x86_64-alpine)
             arch="snyk-alpine"
-            sha="f301c353de234b12e8af1a9269aed69d2cdc2b1ee56092c533144ba6945f8fdb  snyk-alpine"
+            sha="a9ecb2ceaa6791451c64a08763a8232f2ee608f10a668820a66c49a028f5bc08  snyk-alpine"
             ;;
           aarch64-linux)
             arch="snyk-linux-arm64"
-            sha="b3c074f98368a1dd5d06d78f29db1a721f31f2ba5171e694b67fba3c27ba818a  snyk-linux-arm64"
+            sha="f3d5d8144af48a509bd653ddd4ca03baeb881c894425878781e44901c91c40e3  snyk-linux-arm64"
+            ;;
+          x86_64-darwin)
+            arch="snyk-macos"
+            sha="e420e76dff3db2915fc1f218c17f311d484f3d468db9a07c1d6a6413717ed74e  snyk-macos"
             ;;
           *)
             echo "Unsupported machine: ${machine}"
@@ -46,6 +50,7 @@ setup:
         chmod +x snyk
         ./snyk auth $SNYK_TOKEN
 
+
 steps:
   - scan:
       command:
@@ -55,7 +60,7 @@ steps:
       format: sarif
       post-processor:
         docker:
-            image: public.ecr.aws/boostsecurityio/boost-scanner-snyk:6c7ffbf@sha256:58bc0f3a99835c78880060af745e48ff090c11a572a72cd5bb5c63d6c5b752a3
+            image: public.ecr.aws/boostsecurityio/boost-scanner-snyk:828166b@sha256:cfb00b13c86e93b802331c99c229cfb1e0642c0ca0b00eb4ee5799ed2e70adf6
             command: process
             environment:
                 PYTHONIOENCODING: utf-8
