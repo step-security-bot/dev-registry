@@ -1543,7 +1543,7 @@ rules:
     description: Checks for GitHub repositories with privileged outside collaborators.
     group: supply-chain-scm-weak-configuration
     name: cicd-scm-gh-repo-outside-collaborator-admin-maintainer
-    pretty_name:
+    pretty_name: CI/CD - GitHub Repository with Privileged Outside Collaborators
     ref: '{BOOSTSEC_DOC_BASE_URL}/rules/cicd-scm-gh-repo-outside-collaborator-admin-maintainer.html'
   cicd-scm-gh-audit-log-oauth-app-restriction-disabled:
     categories:
