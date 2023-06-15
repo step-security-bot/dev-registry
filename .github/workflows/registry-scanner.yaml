@@ -11,7 +11,8 @@ on:
       - opened
       - synchronize
 
-permissions: read-all
+permissions:
+  contents: read
 
 jobs:
   scan_job:
