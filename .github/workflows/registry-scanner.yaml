@@ -4,13 +4,16 @@ on:
     branches:
       - main
 
-  pull_request:
+  pull_request_target:
     branches:
       - main
     types:
       - opened
       - synchronize
 
+permissions:
+  contents: read
+  
 jobs:
   scan_job:
     name: Scanner Registry Action
@@ -20,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Scan Registry
-        uses: boostsecurityio/scanner-registry-action@v1.1.0
+        uses: boostsecurityio/scanner-registry-action@5c99aa3ecf8dce442f705f738d3118a534ae5221 # v1.2.0
         with:
           api_endpoint: ${{ vars.BOOST_API_ENDPOINT }}
           api_token: ${{ secrets.BOOST_SYSTEM_API_KEY_REGISTRY }}
