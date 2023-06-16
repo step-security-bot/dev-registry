@@ -61,7 +61,7 @@ steps:
 
       post-processor:
         docker:
-          image: public.ecr.aws/boostsecurityio/boost-scanner-codeql:34c921e@sha256:a0c0ff19466d1cc51987fb998f68d288dc5ddbd35156ef68e49991fab18e2a2b
+          image: public.ecr.aws/boostsecurityio/boost-scanner-codeql:5d1ff3b@sha256:c65d0fd61472170fd37488d25703e8e0669034163b353c07ee41f83524a50462
           command: process
           environment:
             PYTHONIOENCODING: utf-8
